@@ -5,8 +5,8 @@ export default function Login() {
     const email = useRef();
     const password = useRef();
 
-    function handleSubmit(){
-        
+    function handleSubmit(e){
+        e.preventDefault();
     }
 
     return (

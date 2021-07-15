@@ -1,20 +1,32 @@
-import { React, useRef } from 'react';
+import { React, useRef, useState } from 'react';
 import Link from 'react-router-dom/Link';
+import Axios from 'axios';
 
 export default function Signup() {
     const email = useRef();
     const password = useRef();
     const confirm_password = useRef();
+    const [error, setError] = useState();
 
     function handleSubmit(e){
         e.preventDefault();
-        console.log(email.current.value, password.current.value, confirm_password.current.value)
-    }
+        Axios({
+            method: "POST",
+            data: {
+                email: email.current.value,
+                password: password.current.value
+            },
+            withCredentials: true,
+            url: "http://localhost:8080/auth/signup"
+        })
+        .then((res) => setError(res));
+    };
 
     return (
         <div>
             <h3>Signup</h3>
             <form onSubmit={handleSubmit}>
+                {error && <p>{error}</p>}
                 <label>Email</label>
                 <input ref={email} type="email"/>
                 <label>Password</label>

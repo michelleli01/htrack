@@ -19,8 +19,19 @@ export default function Signup() {
             withCredentials: true,
             url: "http://localhost:8080/auth/signup"
         })
-        .then((res) => setError(res));
+        .then((res) => setError(res.data));
     };
+
+    function handleChange(e){
+        e.preventDefault();
+
+        if(password.current.value !== confirm_password.current.value){
+            setError("Password and confirm password must match")
+        }
+        else{
+            setError("");
+        }
+    }
 
     return (
         <div>
@@ -30,9 +41,9 @@ export default function Signup() {
                 <label>Email</label>
                 <input ref={email} type="email"/>
                 <label>Password</label>
-                <input ref={password} type="password"/>
+                <input ref={password} type="password" onChange={handleChange}/>
                 <label>Confirm Password</label>
-                <input ref={confirm_password} type="password"/>
+                <input ref={confirm_password} type="password" onChange={handleChange}/>
                 <button>Sign Up</button>
                 <p>Have an account? <Link to="/login">Login here</Link></p>
             </form>

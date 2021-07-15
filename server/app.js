@@ -17,7 +17,7 @@ mongoose.connect(
         useUnifiedTopology: true, 
     },
     () => {
-        console.log("[SERVER] mongoose is connected");
+        console.log("mongoose is connected");
     }
 );
 
@@ -44,11 +44,11 @@ require('./config/passport_config')(passport);
 app.post('/auth/login', (req, res, next)=>{
     passport.authenticate('local', (err, user, info) => {
         if(err) throw err;
-        if(!user) res.send("[SERVER] Account doesn't exist");
+        if(!user) res.send("Account doesn't exist");
         else{
             req.logIn(user, (err) => {
                 if (err) throw err;
-                res.send("[SERVER] Successfully logged in");
+                res.send("Successfully logged in");
                 console.log(req.user);
             });
         }
@@ -58,17 +58,17 @@ app.post('/auth/login', (req, res, next)=>{
 app.post("/auth/signup", (req,res) => {
     const { email, password } = req.body;
     if(!email || !password){
-        res.send("[SERVER] Please enter all fields");
+        res.send("Please enter all fields");
     }
 
     if(password.length < 6){
-        res.send("[SERVER] Password must be at least 6 characters");
+        res.send("Password must be at least 6 characters");
     }
     else{
         User.findOne({ email: email })
         .then(user => {
             if(user){
-                res.send("[SERVER] Email already exists");
+                res.send("Email already exists");
             }
             else{
                 const newUser = new User({
@@ -83,7 +83,7 @@ app.post("/auth/signup", (req,res) => {
                         newUser
                         .save()
                         .then(user => {
-                            res.send("[SERVER] Account successfully created")
+                            res.send("Account successfully created")
                             res.redirect('/auth/login');
                         })
                         .catch(err => console.log(err.message));
@@ -95,7 +95,7 @@ app.post("/auth/signup", (req,res) => {
 });
 
 app.listen(8080, () => {
-    console.log("[SERVER] Server is running")
+    console.log("Server is running")
 })
 
 module.exports = app;

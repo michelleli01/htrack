@@ -56,6 +56,13 @@ router.post("/signup", (req,res) => {
     }
 });
 
+router.get('/forgot-password', (req, res) => {
+    User.findOne({ email: email })
+    .then(user => {
+        
+    })
+})
+
 router.get('/logout', function(req, res){
     req.logout()
 });

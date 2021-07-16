@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 const User = require('./models/user');
 
 const app = express();
+const PORT = 8080;
 
 mongoose.connect(
     "mongodb+srv://michelleli:denhop1009@users.ecemm.mongodb.net/node-auth",
@@ -44,11 +45,11 @@ require('./config/passport_config')(passport);
 app.post('/auth/login', (req, res, next)=>{
     passport.authenticate('local', (err, user, info) => {
         if(err) throw err;
-        if(!user) res.send("Account doesn't exist");
+        if(!user) res.send({success: false, message: "Account doesn't exist"});
         else{
             req.logIn(user, (err) => {
                 if (err) throw err;
-                res.send("Successfully logged in");
+                res.send({success: true, message: "Successfully logged in"});
                 console.log(req.user);
             });
         }
@@ -58,17 +59,17 @@ app.post('/auth/login', (req, res, next)=>{
 app.post("/auth/signup", (req,res) => {
     const { email, password } = req.body;
     if(!email || !password){
-        res.send("Please enter all fields");
+        res.send({success: false, message: "Please enter all fields"});
     }
 
     if(password.length < 6){
-        res.send("Password must be at least 6 characters");
+        res.send({success: false, message: "Password must be at least 6 characters"});
     }
     else{
         User.findOne({ email: email })
         .then(user => {
             if(user){
-                res.send("Email already exists");
+                res.send({success: false, message: "Email already exists"});
             }
             else{
                 const newUser = new User({
@@ -83,8 +84,7 @@ app.post("/auth/signup", (req,res) => {
                         newUser
                         .save()
                         .then(user => {
-                            res.send("Account successfully created")
-                            res.redirect('/auth/login');
+                            res.send({success: true, message: "Account successfully created"})
                         })
                         .catch(err => console.log(err.message));
                     });
@@ -94,8 +94,16 @@ app.post("/auth/signup", (req,res) => {
     }
 });
 
-app.listen(8080, () => {
-    console.log("Server is running")
-})
+app.get('/auth/logout', function(req, res){
+    req.logout()
+});
+
+app.get('/auth/user', function(req, res){
+    res.send(req.user);
+});
+
+app.listen(PORT, () => {
+    console.log(`Server is running on ${PORT}`);
+});
 
 module.exports = app;

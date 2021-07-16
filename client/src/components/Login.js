@@ -1,15 +1,15 @@
-import {React, useRef, useState} from 'react';
-import Link from 'react-router-dom/Link';
+import { React, useRef, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import Axios from 'axios';
 
 export default function Login() {
     const email = useRef();
     const password = useRef();
     const [error, setError] = useState();
+    const history = useHistory();
 
     function handleSubmit(e){
         e.preventDefault();
-
         Axios({
             method: "POST",
             data: {
@@ -19,7 +19,16 @@ export default function Login() {
             withCredentials: true,
             url: "http://localhost:8080/auth/login"
         })
-        .then(res => setError(res.data));
+        .then(res => {
+            if(res.data.success){
+                console.log(res.data.message);
+                history.push('/');
+            } else{
+                setError(res.data.message);
+                email.current.value = "";
+                password.current.value = "";
+            }
+        });
     }
 
     return (

@@ -1,5 +1,5 @@
 import { React, useRef, useState } from 'react';
-import Link from 'react-router-dom/Link';
+import {Link, useHistory} from 'react-router-dom';
 import Axios from 'axios';
 
 export default function Signup() {
@@ -7,6 +7,7 @@ export default function Signup() {
     const password = useRef();
     const confirm_password = useRef();
     const [error, setError] = useState();
+    const history = useHistory();
 
     function handleSubmit(e){
         e.preventDefault();
@@ -19,7 +20,17 @@ export default function Signup() {
             withCredentials: true,
             url: "http://localhost:8080/auth/signup"
         })
-        .then((res) => setError(res.data));
+        .then(res => {
+            if(res.data.success){
+                console.log(res.data.message);
+                history.push('/');
+            } else{
+                setError(res.data.message);
+                email.current.value = "";
+                password.current.value = "";
+                confirm_password.current.value = "";
+            }
+        });
     };
 
     function handleChange(e){

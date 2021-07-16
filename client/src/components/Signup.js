@@ -23,7 +23,7 @@ export default function Signup() {
         .then(res => {
             if(res.data.success){
                 console.log(res.data.message);
-                history.push('/');
+                history.push('/login');
             } else{
                 setError(res.data.message);
                 email.current.value = "";

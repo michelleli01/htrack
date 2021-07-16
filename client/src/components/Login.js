@@ -1,6 +1,7 @@
 import { React, useRef, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Axios from 'axios';
+import Auth from '../auth/Auth';
 
 export default function Login() {
     const email = useRef();
@@ -23,6 +24,7 @@ export default function Login() {
             if(res.data.success){
                 console.log(res.data.message);
                 history.push('/');
+                Auth.authenticateUser();
             } else{
                 setError(res.data.message);
                 email.current.value = "";

@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './components/Home';
-import Signup from './components/Signup';
-import Login from './components//Login';
+import Signup from './components/User/Signup';
+import Login from './components/User/Login';
 import SecuredRoute from './components/SecuredRoute';
+import React from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 

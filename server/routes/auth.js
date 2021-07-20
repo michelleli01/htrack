@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt');
 router.post('/login', (req, res, next)=>{
     passport.authenticate('local', (err, user, info) => {
         if(err) throw err;
-        if(!user) res.send({success: false, message: "Account doesn't exist"});
+        if(!user) res.send({success: false, message: "Invalid email or password"});
         else{
             req.logIn(user, (err) => {
                 if (err) throw err;

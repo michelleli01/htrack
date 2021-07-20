@@ -1,7 +1,8 @@
-import { React } from 'react'
+import React from 'react'
 import Axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import Auth from '../auth/Auth';
+import Calendar from './Calendar/Calendar';
 
 export default function Home() {
     const history = useHistory();
@@ -20,6 +21,7 @@ export default function Home() {
     return (
         <div>
             <h3>Home</h3>
+            <Calendar/>
             <button onClick={handleLogout}>Log out</button>
         </div>
     )

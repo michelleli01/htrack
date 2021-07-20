@@ -8,7 +8,7 @@ export default function PrivateRoute({ component: Component, ...rest }) {
     <Route
       {...rest}
       render={props => {
-        return Auth.isUserAuthenticated ? <Component {...props} /> : <Redirect push to={{
+        return Auth.isUserAuthenticated() ? <Component {...props} /> : <Redirect push to={{
             pathname: '/login',
             from: props.location
         }}/>

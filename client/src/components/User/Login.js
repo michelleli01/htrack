@@ -23,7 +23,8 @@ export default function Login() {
         .then(res => {
             if(res.data.success){
                 console.log(res.data.message);
-                Auth.authenticateUser();
+                console.log(res.data)
+                Auth.authenticateUser(res.data.user._id, res.data.user.email);
                 history.push('/');
             } else{
                 setError(res.data.message);

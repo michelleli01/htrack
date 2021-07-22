@@ -14,7 +14,7 @@ function App() {
             <Router>
                 <Switch>
                     <SecuredRoute exact path="/" component={Home} />
-                    <Route exact path="/habits" component={HabitPage} />
+                    <SecuredRoute exact path="/habits" component={HabitPage} />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/signup" component={Signup} />
                 </Switch>

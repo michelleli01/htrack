@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./components/Home";
-import Signup from "./components/User/Signup";
-import Login from "./components/User/Login";
-import HabitPage from "./components/Habit/HabitPage";
-import SecuredRoute from "./components/SecuredRoute";
+import HomePage from "./components/HomePage/HomePage";
+import Signup from "./components/Authentication/Signup";
+import Login from "./components/Authentication/Login";
 import NavBar from "./components/NavBar/NavBar";
+import SecuredRoute from './components/Secured/SecuredRoute';
+import UserHome from './components/Secured/UserHome'
 import React from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -15,10 +15,10 @@ function App() {
             <Router>
                 <NavBar />
                 <Switch>
-                    <SecuredRoute exact path="/" component={Home} />
-                    <SecuredRoute exact path="/habits" component={HabitPage} />
+                    <Route exact path="/" component={HomePage} />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/signup" component={Signup} />
+                    <SecuredRoute expact path="/user" component={UserHome}/>
                 </Switch>
             </Router>
         </div>

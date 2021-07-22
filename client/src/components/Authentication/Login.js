@@ -3,6 +3,8 @@ import { Link, useHistory } from 'react-router-dom';
 import Axios from 'axios';
 import Auth from '../../auth/Auth';
 
+import './Login.css'
+
 export default function Login() {
     const email = useRef();
     const password = useRef();
@@ -35,16 +37,16 @@ export default function Login() {
     }
 
     return (
-        <div>
-            <h3>Login</h3>
-            <form onSubmit={handleSubmit}>
-                {error && <p>{error}</p>}
-                <label>E-mail</label>
-                <input ref={email} type="email"/>
-                <label>Password</label>
-                <input ref={password} type="password"/>
-                <button>Login</button>
-                <p>Don't have an account? <Link to="/signup">Sign up here</Link></p>
+        <div className="login-container">
+            <h3 className="login-header">Login</h3>
+            <form onSubmit={handleSubmit} className="login-form">
+                {error && <p className="login-error">{error}</p>}
+                <label className="login-label">E-mail</label>
+                <input ref={email} type="email" className="login-input"/>
+                <label className="login-label">Password</label>
+                <input ref={password} type="password" className="login-input"/>
+                <button className="login-button">Login</button>
+                <p className="register">Don't have an account? <Link to="/signup">Sign up here</Link></p>
             </form>
         </div>
     )

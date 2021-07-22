@@ -2,6 +2,8 @@ import React, { useRef, useState } from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import Axios from 'axios';
 
+import './Signup.css';
+
 export default function Signup() {
     const email = useRef();
     const password = useRef();
@@ -45,18 +47,18 @@ export default function Signup() {
     }
 
     return (
-        <div>
-            <h3>Signup</h3>
-            <form onSubmit={handleSubmit}>
-                {error && <p>{error}</p>}
-                <label>Email</label>
-                <input ref={email} type="email"/>
-                <label>Password</label>
-                <input ref={password} type="password" onChange={handleChange}/>
-                <label>Confirm Password</label>
-                <input ref={confirm_password} type="password" onChange={handleChange}/>
-                <button>Sign Up</button>
-                <p>Have an account? <Link to="/login">Login here</Link></p>
+        <div className="signup-container">
+            <h3 className="signup-header">Signup</h3>
+            <form onSubmit={handleSubmit} className="signup-form">
+                {error && <p className="signup-error">{error}</p>}
+                <label className="signup-label">Email</label>
+                <input ref={email} type="email" className="signup-input"/>
+                <label className="signup-label">Password</label>
+                <input ref={password} type="password" onChange={handleChange} className="signup-input"/>
+                <label className="signup-label">Confirm Password</label>
+                <input ref={confirm_password} type="password" onChange={handleChange} className="signup-input"/>
+                <button className="signup-button">Sign Up</button>
+                <p className="login">Have an account? <Link to="/login">Login here</Link></p>
             </form>
         </div>
     )

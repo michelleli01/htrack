@@ -1,7 +1,7 @@
 import React from 'react'
 import Axios from 'axios';
 import { useHistory } from 'react-router-dom';
-import Auth from '../auth/Auth';
+import Auth from '../../auth/Auth';
 
 export default function Home() {
     const history = useHistory();

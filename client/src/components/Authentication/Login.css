@@ -1,0 +1,67 @@
+.login-container{
+    align-items: center;
+    height: 450px;
+    width: 400px;
+    padding-left: 40px;
+    color: #353535;
+    margin: 0 auto;
+    margin-top: 150px;
+}
+
+.login-header{
+    text-align: left;
+    font: normal normal 72px/80px Poppins;
+    letter-spacing: 1.5px;
+    color: #30c26d;
+    font-weight: 700;
+    margin-bottom: 30px;
+}   
+
+.login-form{
+    width: 640px;
+    margin-bottom: 20px;
+    text-align: left;
+    font: normal normal normal 20px/30px Roboto;
+    letter-spacing: 0;
+}
+
+.login-button{
+    width: 125px;
+    height: 50px;
+    background: transparent linear-gradient(106deg, #49ec8d 0%, #49ec8d 100%) 0% 0% no-repeat padding-box;
+    border-radius: 12px;
+    border-width: 0;
+    text-align: center;
+    align-self: center;
+    font: normal normal bold 20px/30px Poppins;
+    letter-spacing: 0.5px;
+    color: #1c6e40;
+    margin-bottom: 15px;
+}
+
+.login-button:hover {
+    background: transparent linear-gradient(106deg, #49ec8d 0%, #30c26d 100%) 0% 0% no-repeat padding-box;
+}
+
+.login-label{
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.login-input{
+    margin-bottom: 40px;
+    display: block;
+    padding: 5px;
+}
+
+.login-input:focus{
+    border: 2px solid #353535;
+}
+
+.login-error{
+    color: red;
+    font-weight: 700;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto");

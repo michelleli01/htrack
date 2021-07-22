@@ -1,0 +1,60 @@
+.thank-you-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.thank-you {
+    position: relative;
+    padding: 32px;
+    width: 100%;
+    max-width: 400px;
+    background-color: white;
+    border-radius: 12px;
+}
+
+.thank-you-header {
+    font: normal normal bold 32px/40px Poppins;
+    color: #353535;
+    margin-bottom: 5%;
+}
+
+.thank-you-text {
+    font: normal normal normal 16px/20px Poppins;
+    color: gray;
+}
+
+.thank-you-divider {
+    width: 7.5em;
+    height: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    background: #1c6e40 0% 0% no-repeat padding-box;
+    opacity: 1;
+    position: relative;
+    margin-bottom: 5%;
+}
+
+.thank-you-close-button {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    border-radius: 12.5%;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font: normal normal normal 16px/16px Poppins;
+    color: gray;
+}
+
+.thank-you-close-button:hover{
+    color:#1c6e40;
+}

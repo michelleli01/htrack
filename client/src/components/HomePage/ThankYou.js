@@ -5,10 +5,10 @@ export default function ThankYou(props) {
     return (props.messageSent)?(
         <div className="thank-you-popup">
             <div className="thank-you">
-                <h3>Thank you for your message!</h3>
-                <div className="divider"/>
-                <p>I will get back to you ASAP.</p>
-                <button className="close-button" onClick={()=>props.setMessageSent(false)}>Close</button>
+                <h3 className="thank-you-header">Thank you for your message!</h3>
+                <div className="thank-you-divider"/>
+                <p className="thank-you-text">I will get back to you ASAP.</p>
+                <button className="thank-you-close-button" onClick={()=>props.setMessageSent(false)}>Close</button>
             </div>
         </div>
     ):"";

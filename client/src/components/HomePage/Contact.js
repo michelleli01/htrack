@@ -6,6 +6,7 @@ import { AiFillPhone } from "react-icons/ai";
 import { AiFillLinkedin } from "react-icons/ai";
 
 import "./Contact.css";
+import ThankYou from "./ThankYou";
 
 export default function Contact() {
     const [name, setName] = useState();
@@ -26,8 +27,6 @@ export default function Contact() {
 
     function handleSendMessage(e) {
         e.preventDefault();
-        console.log(process.env.REACT_APP_SERVICE_ID);
-
         if (
             name.trim() === "" ||
             message.trim() === "" ||
@@ -38,6 +37,7 @@ export default function Contact() {
         if (!validator.isEmail(email)) {
             setError("Please enter valid email.");
         } else {
+            setError("");
             emailjs
                 .sendForm(
                     process.env.REACT_APP_SERVICE_ID,
@@ -56,6 +56,12 @@ export default function Contact() {
                     );
                 });
         }
+    }
+
+    function clearForm(){
+        setName("");
+        setEmail("");
+        setMessage("");
     }
 
     return (
@@ -144,6 +150,9 @@ export default function Contact() {
                         </button>
                     </form>
                 </div>
+
+                <ThankYou messageSent={messageSent} setMessageSent={setMessageSent}/>
+                {clearForm}
             </div>
         </div>
     );

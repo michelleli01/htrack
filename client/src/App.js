@@ -4,6 +4,7 @@ import Signup from "./components/User/Signup";
 import Login from "./components/User/Login";
 import HabitPage from "./components/Habit/HabitPage";
 import SecuredRoute from "./components/SecuredRoute";
+import NavBar from "./components/NavBar/NavBar";
 import React from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,6 +13,7 @@ function App() {
     return (
         <div>
             <Router>
+                <NavBar />
                 <Switch>
                     <SecuredRoute exact path="/" component={Home} />
                     <SecuredRoute exact path="/habits" component={HabitPage} />

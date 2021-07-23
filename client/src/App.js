@@ -3,6 +3,7 @@ import HomePage from "./components/HomePage/HomePage";
 import Signup from "./components/Authentication/Signup";
 import Login from "./components/Authentication/Login";
 import NavBar from "./components/NavBar/NavBar";
+import Footer from "./components/Footer/Footer";
 import SecuredRoute from './components/Secured/SecuredRoute';
 import UserHome from './components/Secured/UserHome'
 
@@ -21,6 +22,7 @@ function App() {
                     <Route exact path="/signup" component={Signup} />
                     <SecuredRoute expact path="/user" component={UserHome}/>
                 </Switch>
+                {/* <Footer/> */}
             </Router>
         </div>
     );

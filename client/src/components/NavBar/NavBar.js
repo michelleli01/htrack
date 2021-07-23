@@ -30,8 +30,8 @@ export default function NavBar() {
                             activeClass="active"
                             spy={true}
                             smooth={true}
-                            offset={-50}
-                            duration={500}
+                            offset={-10}
+                            duration={10}
                         >
                             About
                         </Link>
@@ -41,8 +41,8 @@ export default function NavBar() {
                             activeClass="active"
                             spy={true}
                             smooth={true}
-                            offset={-50}
-                            duration={500}
+                            offset={-10}
+                            duration={10}
                         >
                             Contact
                         </Link>

@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 
 import ABOUT_IMG_1 from "../../assets/ABOUT_IMG_1.jpg";
 
-import './About.css';
+import "./About.css";
 
 export default function About() {
     return (
@@ -17,24 +17,32 @@ export default function About() {
                         alt="about img"
                     />
                 </Col>
-                <Col className="about-text-container">
-                    <div>
-                        <p className="about-subtitle">ABOUT</p>
-                        <h3 className="features-header">Features</h3>
-                        <div className="about-divider" />
-                        <p className="about-section">
+                <Col>
+                    <p className="about-subtitle">ABOUT</p>
+                    <h3 className="purpose-header">Purpose</h3>
+                    <div className="about-divider" />
+                    <div className="about-text-container">
+                        <p className="about-text">
                             HTrack is a habit tracking web application meant to
                             help build productive habits so we all can lead more
                             fulfilling lifestyles.
                         </p>
-                        <p>
+                        <p className="about-text">
                             This project was largely inspired by the book Atomic
                             Habits by James Clear. After reading this book I was
                             determined to create something that allowed me to
                             use some of the tips provided towards my own life.
                         </p>
-                        <Link to="contact" spy={true} smooth={true} offset={-50} duration={500}>
-                            <button className="about-button">Contact Me!</button>
+                        <Link
+                            to="contact"
+                            spy={true}
+                            smooth={true}
+                            offset={-10}
+                            duration={10}
+                        >
+                            <button className="contact-button">
+                                Contact Me!
+                            </button>
                         </Link>
                     </div>
                 </Col>

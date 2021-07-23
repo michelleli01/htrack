@@ -4,25 +4,32 @@ import Signup from "./components/Authentication/Signup";
 import Login from "./components/Authentication/Login";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
-import SecuredRoute from './components/Secured/SecuredRoute';
-import UserHome from './components/Secured/UserHome'
+import SecuredRoute from "./components/Secured/SecuredRoute";
+import UserHome from "./components/Secured/UserHome";
 
 import React from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 
 function App() {
     return (
         <div>
             <Router>
-                <NavBar />
-                <Switch>
-                    <Route exact path="/" component={HomePage} />
-                    <Route exact path="/login" component={Login} />
-                    <Route exact path="/signup" component={Signup} />
-                    <SecuredRoute expact path="/user" component={UserHome}/>
-                </Switch>
-                {/* <Footer/> */}
+                <div className="main-wrapper">
+                    <NavBar />
+                    <Switch>
+                        <Route exact path="/" component={HomePage} />
+                        <Route exact path="/login" component={Login} />
+                        <Route exact path="/signup" component={Signup} />
+                        <SecuredRoute
+                            expact
+                            path="/user"
+                            component={UserHome}
+                        />
+                    </Switch>
+                    <Footer />
+                </div>
             </Router>
         </div>
     );

@@ -1,21 +1,18 @@
 .footer-container {
     box-sizing: border-box;
     height: 100%;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
     min-height: 100vh;
     display: block;
     position: relative;
-    padding-bottom: 60px;
 }
 
 footer {
     position: absolute;
     bottom: 0;
+    left: 0;
     width: 100%;
-    color: gray;
-    background: #34353a 0% 0% no-repeat padding-box;
-    font-weight: bold;
-    padding-top: -2em;
+    padding: 10px;
+    background-color: #353535;
+    text-align: center;
+    color: white;
 }

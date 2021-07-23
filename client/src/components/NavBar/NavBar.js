@@ -1,6 +1,6 @@
 import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
-import { Link } from "react-scroll";
+import { Link, animateScroll as Scroll } from "react-scroll";
 import { Link as RouteLink } from "react-router-dom";
 
 import "./NavBar.css";
@@ -14,14 +14,26 @@ export default function NavBar() {
             className="nav-container"
         >
             <Container>
-                <Navbar.Brand href="/">HTrack</Navbar.Brand>
+                <Navbar.Brand
+                    onClick={() => {
+                        Scroll.scrollToTop();
+                    }}
+                >
+                    HTrack
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="response-navbar-nav" />
                 <Navbar.Collapse id="response-navbar-nav">
                     <Nav
                         className="mr-auto justify-content-end"
                         style={{ width: "100%" }}
                     >
-                        <RouteLink className="link" to="/">
+                        <RouteLink
+                            onClick={() => {
+                                Scroll.scrollToTop();
+                            }}
+                            className="link"
+                            to="/"
+                        >
                             Home
                         </RouteLink>
                         <Link

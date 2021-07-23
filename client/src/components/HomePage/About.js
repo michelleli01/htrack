@@ -23,15 +23,19 @@ export default function About() {
                     <div className="about-divider" />
                     <div className="about-text-container">
                         <p className="about-text">
-                            HTrack is a habit tracking web application meant to
-                            help build productive habits so we all can lead more
-                            fulfilling lifestyles.
+                            <b>HTrack</b> is a habit tracking web application
+                            meant to help{" "}
+                            <b>
+                                build productive habits so we all can lead more
+                                fulfilling lifestyles.
+                            </b>
                         </p>
                         <p className="about-text">
                             This project was largely inspired by the book Atomic
-                            Habits by James Clear. After reading this book I was
-                            determined to create something that allowed me to
-                            use some of the tips provided towards my own life.
+                            Habits by James Clear. After reading this book, I
+                            was determined to create something that allowed me
+                            to use some of the tips provided in the book to help
+                            improve my own life.
                         </p>
                         <Link
                             to="contact"

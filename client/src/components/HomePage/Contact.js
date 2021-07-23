@@ -74,7 +74,7 @@ export default function Contact() {
                     <ul className="contact-list">
                         <li className="contact-list-item">
                             <div>
-                                <MdEmail className="icon" />
+                                <MdEmail className="icon" size="1.5em"/>
                                 <a
                                     href="mailto:myl39@cornell.edu"
                                     className="contact-link"
@@ -83,14 +83,14 @@ export default function Contact() {
                                 </a>
                             </div>
                         </li>
-                        <li>
+                        <li className="contact-list-item">
                             <div>
-                                <AiFillPhone className="icon" />
+                                <AiFillPhone className="icon" size="1.5em"/>
                                 +1 (301)-250-0346
                             </div>
                         </li>
-                        <li>
-                            <AiFillLinkedin className="icon" />
+                        <li className="contact-list-item">
+                            <AiFillLinkedin className="icon" size="1.5em"/>
                             <a
                                 href="https://www.linkedin.com/in/michelleli0"
                                 className="contact-link"
@@ -102,8 +102,8 @@ export default function Contact() {
                 </div>
 
                 <div className="send-message-card">
-                    <p>Contact me here!</p>
-                    <p>
+                    <p className="send-message-subtitle">Contact me here!</p>
+                    <p className="send-message-text">
                         I'd love to hear from you! Send me a message and I'll
                         try to response as soon as possible.
                     </p>
@@ -145,7 +145,7 @@ export default function Contact() {
                             }}
                             required
                         />
-                        <button className="contact-send-message-button">
+                        <button className="send-message-button">
                             Send Message
                         </button>
                     </form>

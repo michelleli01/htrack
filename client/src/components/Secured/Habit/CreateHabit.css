@@ -1,0 +1,103 @@
+.create-habit-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    text-align: left;
+}
+
+.create-habit{
+    margin-top: 100px;
+    position: relative;
+    padding: 32px;
+    width: 100%;
+    max-width: 400px;
+    background-color: white;
+    border-radius: 12px;
+}
+
+.create-habit-header {
+    margin-bottom: 25px;
+    text-align: left;
+    position: relative;
+    font: normal normal bold 45px/45px Poppins;
+    color: #34353a;
+}
+
+.create-habit-divider {
+    width: 7.5em;
+    height: 0.5em;
+    background: #1c6e40 0% 0% no-repeat padding-box;
+    opacity: 1;
+    position: relative;
+    margin-bottom: 5%;
+}
+
+.create-habit-form {
+    width: 100%;
+    height: 100%;
+}
+
+.create-habit-label {
+    margin-top: 10px;
+    display: block;
+}
+
+.create-habit-input {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.create-habit-select {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.create-habit-text-area {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.create-habit-button {
+    margin-top: 1em;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    background: transparent linear-gradient(106deg, #49ec8d 0%, #49ec8d 100%) 0%
+        0% no-repeat padding-box;
+    border-radius: 12px;
+    border-width: 0;
+    font: normal normal bold 20px/30px Poppins;
+    letter-spacing: 0.5px;
+    color: #1c6e40;
+    display: block;
+}
+
+.create-habit-button:hover {
+    background: transparent linear-gradient(106deg, #49ec8d 0%, #30c26d 100%) 0%
+        0% no-repeat padding-box;
+    opacity: 1;
+}
+
+.create-habit-close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border-radius: 12.5%;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font: normal normal normal 18px/18px Poppins;
+    color: gray;
+}
+
+.create-habit-close-button:hover{
+    color:#1c6e40;
+}

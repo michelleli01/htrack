@@ -6,7 +6,6 @@ import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import SecuredRoute from "./components/Secured/SecuredRoute";
 import UserHome from "./components/Secured/UserHome";
-import Auth from "./auth/Auth";
 
 import React from "react";
 

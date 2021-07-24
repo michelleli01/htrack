@@ -1,29 +1,41 @@
-import React from 'react'
-import Axios from 'axios';
-import { useHistory } from 'react-router-dom';
-import Auth from '../../auth/Auth';
-import NavBar from '../NavBar/NavBar';
+import React from "react";
+import Axios from "axios";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    useHistory,
+    useRouteMatch,
+} from "react-router-dom";
+
+import Auth from "../../auth/Auth";
+
+import NavBar from "../NavBar/NavBar";
+import Dashboard from "./Dashboard";
+import CreateHabit from "./Habit/CreateHabit";
 
 export default function Home() {
     const history = useHistory();
+    let { path } = useRouteMatch();
 
-    function handleLogout(e){
+    function handleLogout(e) {
         e.preventDefault();
         Axios({
-            method: "GET", 
+            method: "GET",
             withCredentials: true,
-            url: "http://localhost:8080/auth/logout"
-        })
+            url: "http://localhost:8080/auth/logout",
+        });
         Auth.deauthenticateUser();
-        history.push('/')
-    }   
+        history.push("/");
+    }
 
     return (
-
-        <div>
-            <NavBar isUserAuthenticated={Auth.isUserAuthenticated()} handleLogout={handleLogout}/>
-            <h3>Home</h3>
-            <button onClick={handleLogout}>Log out</button>
-        </div>
-    )
+        <Router>
+            <NavBar handleLogout={handleLogout} />
+            <Switch>
+                <Route path={`${path}/:useId/statistics`} />
+                <Route path={`${path}`} component={Dashboard} />
+            </Switch>
+        </Router>
+    );
 }

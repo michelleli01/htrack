@@ -6,8 +6,6 @@ import { Link as RouteLink } from "react-router-dom";
 import "./NavBar.css";
 
 export default function NavBar(props) {
-    console.log(props.handleLogout);
-
     return props.handleLogout === undefined ? (
         <Navbar
             collapseOnSelect

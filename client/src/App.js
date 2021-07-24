@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import SecuredRoute from "./components/Secured/SecuredRoute";
 import UserHome from "./components/Secured/UserHome";
+import Auth from "./auth/Auth";
 
 import React from "react";
 
@@ -17,7 +18,7 @@ function App() {
         <div>
             <Router>
                 <div className="main-wrapper">
-                    <NavBar />
+                    <NavBar/>
                     <Switch>
                         <Route exact path="/" component={HomePage} />
                         <Route exact path="/login" component={Login} />

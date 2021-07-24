@@ -5,8 +5,10 @@ import { Link as RouteLink } from "react-router-dom";
 
 import "./NavBar.css";
 
-export default function NavBar() {
-    return (
+export default function NavBar(props) {
+    console.log(props.handleLogout);
+
+    return props.handleLogout === undefined ? (
         <Navbar
             collapseOnSelect
             fixed="top"
@@ -67,6 +69,37 @@ export default function NavBar() {
                             <Nav.Link className="button-link" href="/signup">
                                 Signup
                             </Nav.Link>
+                        </button>
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
+    ) : (
+        <Navbar
+            collapseOnSelect
+            fixed="top"
+            expand="md"
+            className="nav-container"
+        >
+            <Container>
+                <Navbar.Brand
+                    onClick={() => {
+                        Scroll.scrollToTop();
+                    }}
+                >
+                    HTrack
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="response-navbar-nav" />
+                <Navbar.Collapse id="response-navbar-nav">
+                    <Nav
+                        className="mr-auto justify-content-end"
+                        style={{ width: "100%" }}
+                    >
+                        <button
+                            className="button button-link"
+                            onClick={props.handleLogout}
+                        >
+                            Logout
                         </button>
                     </Nav>
                 </Navbar.Collapse>

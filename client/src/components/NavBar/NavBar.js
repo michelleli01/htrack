@@ -3,6 +3,7 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link, animateScroll as Scroll } from "react-scroll";
 import { Link as RouteLink } from "react-router-dom";
 
+import logo from "../../assets/HTrack_Logo.png";
 import "./NavBar.css";
 
 export default function NavBar(props) {
@@ -19,7 +20,7 @@ export default function NavBar(props) {
                         Scroll.scrollToTop();
                     }}
                 >
-                    HTrack
+                    <img src={logo} height="100" alt="htrack logo" />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="response-navbar-nav" />
                 <Navbar.Collapse id="response-navbar-nav">
@@ -85,7 +86,7 @@ export default function NavBar(props) {
                         Scroll.scrollToTop();
                     }}
                 >
-                    HTrack
+                    <img src={logo} height="100" alt="htrack logo" />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="response-navbar-nav" />
                 <Navbar.Collapse id="response-navbar-nav">

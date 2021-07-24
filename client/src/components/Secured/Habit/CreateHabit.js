@@ -10,6 +10,11 @@ export default function CreateHabit(props) {
 
     function handleCreateHabit(e) {
         e.preventDefault();
+        const newHabit = {
+            name: habitName,
+            description: habitDescription,
+            frequency: frequency,
+        };
     }
 
     function handleNameChange(e) {
@@ -66,11 +71,11 @@ export default function CreateHabit(props) {
                         Create Habit
                     </button>
                     <button
-                    onClick={()=>props.setButtonClicked(false)}
-                    className="create-habit-close-button"
-                >
-                    Close
-                </button>
+                        onClick={() => props.setButtonClicked(false)}
+                        className="create-habit-close-button"
+                    >
+                        Close
+                    </button>
                 </form>
             </div>
         </div>

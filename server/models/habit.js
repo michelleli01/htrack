@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const habit = new mongoose.Schema({
     user_id: String,
     name: String, 
-    frequency: Number,
+    frequency: String,
     description: String,
     start_date: Date
 });

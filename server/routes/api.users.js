@@ -6,14 +6,14 @@ router.get("/users/:userId/habits", (req, res, next) => {
     Habit.find({ user_id: req.params.userId })
         .then((habits) => {
             console.log(habits);
-            res.status(200).json({
+            res.status(200).send({
                 message: "Successfully retrieved habits",
                 habits,
             });
         })
         .catch((err) => {
             console.log(err.message);
-            res.status(400).json({
+            res.status(400).send({
                 message: "Unable to retrieve habits at this time",
             });
         });
@@ -21,14 +21,18 @@ router.get("/users/:userId/habits", (req, res, next) => {
 
 router.post("/users/:userId/habits", (req, res, next) => {
     const { name, description, frequency, start_date } = req.body;
-    console.log(req.body);
 
-    if (!name || !frequency || !start_date) {
-        res.json({ success: false, message: "Please enter all fields" });
+    if (name.trim() === "" || frequency.trim() === "" || !start_date) {
+        res.status(400).json({ message: "Please enter all fields" });
     } else {
+        console.log(req.body);
+
         Habit.findOne({ name: name }).then((habit) => {
             if (habit) {
-                res.json({ success: false, message: "Habit already exists" });
+                res.status(400).send({
+                    success: false,
+                    message: "Habit already exists",
+                });
             } else {
                 const newHabit = new Habit({
                     user_id: req.params.userId,
@@ -41,14 +45,14 @@ router.post("/users/:userId/habits", (req, res, next) => {
                 newHabit
                     .save()
                     .then((habit) => {
-                        res.status(200).json({
+                        res.status(200).send({
                             success: true,
                             message: "Habit successfully created",
                         });
                     })
                     .catch((err) => {
                         console.log(err.message);
-                        res.status(400).json({
+                        res.status(400).send({
                             success: false,
                             message: "Unable to create habit at this time",
                         });
@@ -61,14 +65,14 @@ router.post("/users/:userId/habits", (req, res, next) => {
 router.get("/users/:userId/habits/:habitId", (req, res, next) => {
     Habit.findOne({ user_id: req.params.userId, _id: req.params.habitId })
         .then((habit) => {
-            res.status(200).json({
+            res.status(200).send({
                 message: `Succesfully retrieved ${habit.name} habit`,
                 habit,
             });
         })
         .catch((err) => {
             console.log(err.message);
-            res.status(400).json({
+            res.status(400).send({
                 message: "Unable to retrieve habit at this time",
             });
         });
@@ -77,13 +81,13 @@ router.get("/users/:userId/habits/:habitId", (req, res, next) => {
 router.delete("/users/:userId/habits/:habitId", (req, res, next) => {
     Habit.deleteOne({ user_id: req.params.userId, _id: req.params.habitId })
         .then((habit) => {
-            res.status(200).json({
+            res.status(200).send({
                 message: `${req.params.habitId} removed`,
             });
         })
         .catch((err) => {
             console.error(err.message);
-            res.status(400).json({
+            res.status(400).send({
                 message: "Unable to remove habit at this time",
             });
         });
@@ -93,7 +97,7 @@ router.put("/users/:userId/habits/:habitId", (req, res, next) => {
     const { name, frequency, description } = req.body;
     Habit.findOne({ name: name }).then((habit) => {
         if (habit && habit.name !== name)
-            res.status(400).json({
+            res.status(400).send({
                 message: "Habit with that name already exists",
             });
     });
@@ -103,13 +107,13 @@ router.put("/users/:userId/habits/:habitId", (req, res, next) => {
         { name: name, frequency: frequency, description: description }
     )
         .then((habit) => {
-            res.status(200).json({
+            res.status(200).send({
                 message: "Habit successfully updated",
                 habit,
             });
         })
         .catch((err) => {
-            res.status(400).json({ message: "Unable to update habit" });
+            res.status(400).send({ message: "Unable to update habit" });
         });
 });
 

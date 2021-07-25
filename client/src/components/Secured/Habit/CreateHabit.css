@@ -101,3 +101,8 @@
 .create-habit-close-button:hover{
     color:#1c6e40;
 }
+
+.create-habit-error{
+    color: red;
+    font-weight: 700;
+}

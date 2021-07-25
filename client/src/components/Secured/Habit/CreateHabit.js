@@ -1,21 +1,40 @@
 import React, { useState } from "react";
+import axios from "axios";
+import Auth from "../../../auth/Auth";
 
 import "./CreateHabit.css";
 
 export default function CreateHabit(props) {
     const date = new Date();
-    const [habitName, setHabitName] = useState();
-    const [habitDescription, setHabitDescription] = useState();
-    const [frequency, setFrequency] = useState();
+    const [habitName, setHabitName] = useState('');
+    const [habitDescription, setHabitDescription] = useState('');
+    const [frequency, setFrequency] = useState('Daily');
+    const [error, setError] = useState('');
 
-    function handleCreateHabit(e) {
+    async function handleCreateHabit(e) {
         e.preventDefault();
+        
         const newHabit = {
             name: habitName,
             description: habitDescription,
             frequency: frequency,
-            date: date.toISOString()
+            start_date: date.toJSON(),
         };
+
+        await axios({
+            method: "POST",
+            data: newHabit,
+            withCredentials: true,
+            url: `/api/users/${Auth.getToken()}/habits`,
+        })
+            .then((res) => {
+                console.log(res);
+                props.setButtonClicked(false);
+            })
+            .catch((err) => {
+                console.log(err);
+                setError(err.response.data.message);
+            });
     }
 
     function handleNameChange(e) {
@@ -41,6 +60,7 @@ export default function CreateHabit(props) {
                 </h3>
                 <div className="create-habit-divider" />
                 <form className="create-habit-form">
+                    {error && <p className="create-habit-error">{error}</p>}
                     <label className="create-habit-label">Name</label>
                     <input
                         type="text"
@@ -53,10 +73,18 @@ export default function CreateHabit(props) {
                         className="create-habit-select"
                         onChange={handleFrequencyChange}
                     >
-                        <option className="create-habit-option">Daily</option>
-                        <option className="create-habit-option">Weekly</option>
-                        <option className="create-habit-option">Monthly</option>
-                        <option className="create-habit-option">Yearly</option>
+                        <option className="create-habit-option" value="Daily">
+                            Daily
+                        </option>
+                        <option className="create-habit-option" value="Weekly">
+                            Weekly
+                        </option>
+                        <option className="create-habit-option" value="Monthly">
+                            Monthly
+                        </option>
+                        <option className="create-habit-option" value="Yearly">
+                            Yearly
+                        </option>
                     </select>
                     <label className="create-habit-label">Description</label>
                     <textarea

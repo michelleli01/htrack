@@ -14,7 +14,7 @@ export default function CreateHabit(props) {
             name: habitName,
             description: habitDescription,
             frequency: frequency,
-            date: date.toISOString
+            date: date.toISOString()
         };
     }
 

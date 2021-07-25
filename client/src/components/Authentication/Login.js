@@ -20,7 +20,7 @@ export default function Login() {
                 password: password.current.value
             },
             withCredentials: true,
-            url: "http://localhost:8080/auth/login"
+            url: "/auth/login"
         })
         .then(res => {
             if(res.data.success){

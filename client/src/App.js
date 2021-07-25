@@ -1,4 +1,3 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";
 import Signup from "./components/Authentication/Signup";
 import Login from "./components/Authentication/Login";
@@ -8,16 +7,20 @@ import SecuredRoute from "./components/Secured/SecuredRoute";
 import UserHome from "./components/Secured/UserHome";
 
 import React from "react";
+import axios from "axios";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+
+axios.defaults.baseURL = "http://localhost:8080/";
 
 function App() {
     return (
         <div>
             <Router>
                 <div className="main-wrapper">
-                    <NavBar/>
+                    <NavBar />
                     <Switch>
                         <Route exact path="/" component={HomePage} />
                         <Route exact path="/login" component={Login} />

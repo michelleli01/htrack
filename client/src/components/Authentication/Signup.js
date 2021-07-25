@@ -20,7 +20,7 @@ export default function Signup() {
                 password: password.current.value
             },
             withCredentials: true,
-            url: "http://localhost:8080/auth/signup"
+            url: "/auth/signup"
         })
         .then(res => {
             if(res.data.success){

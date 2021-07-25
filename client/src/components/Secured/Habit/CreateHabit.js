@@ -28,7 +28,7 @@ export default function CreateHabit(props) {
         })
             .then((res) => {
                 console.log(res);
-                props.setButtonClicked(false);
+                props.setCreateButtonClicked(false);
                 window.location.reload();
             })
             .catch((err) => {
@@ -52,7 +52,7 @@ export default function CreateHabit(props) {
         setFrequency(e.target.value);
     }
 
-    return props.buttonClicked ? (
+    return props.createButtonClicked ? (
         <div className="create-habit-popup">
             <div className="create-habit">
                 <h3 className="create-habit-header">
@@ -100,7 +100,7 @@ export default function CreateHabit(props) {
                         Create Habit
                     </button>
                     <button
-                        onClick={() => props.setButtonClicked(false)}
+                        onClick={() => props.setCreateButtonClicked(false)}
                         className="create-habit-close-button"
                     >
                         Close

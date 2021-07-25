@@ -6,7 +6,7 @@ import "./Dashboard.css";
 
 export default function Dashboard() {
     const date = new Date();
-    const [buttonClicked, setButtonClicked] = useState(false);
+    const [createButtonClicked, setCreateButtonClicked] = useState(false);
 
     return (
         <div className="dashboard">
@@ -19,14 +19,14 @@ export default function Dashboard() {
                 <button
                     className="dashboard-button"
                     onClick={() => {
-                        setButtonClicked(true);
+                        setCreateButtonClicked(true);
                     }}
                 >
                     Create New Habit
                 </button>
                 <CreateHabit
-                    buttonClicked={buttonClicked}
-                    setButtonClicked={setButtonClicked}
+                    createButtonClicked={createButtonClicked}
+                    setCreateButtonClicked={setCreateButtonClicked}
                     date={date}
                 />
             </div>

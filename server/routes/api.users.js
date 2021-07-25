@@ -5,7 +5,6 @@ const Habit = require("../models/habit");
 router.get("/users/:userId/habits", (req, res, next) => {
     Habit.find({ user_id: req.params.userId })
         .then((habits) => {
-            console.log(habits);
             res.status(200).send({
                 message: "Successfully retrieved habits",
                 habits,

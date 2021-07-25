@@ -1,19 +1,21 @@
 import React, { useState } from "react";
-import { Link, useRouteMatch } from "react-router-dom";
 import CreateHabit from "./Habit/CreateHabit";
-import GetHabit from "./Habit/GetHabit";
+import HabitList from "./Habit/HabitList";
 
 import "./Dashboard.css";
 
 export default function Dashboard() {
-    let { path } = useRouteMatch();
+    const date = new Date();
     const [buttonClicked, setButtonClicked] = useState(false);
 
     return (
         <div className="dashboard">
             <h3 className="dashboard-header">Dashboard</h3>
+            <p className="dashboard-subtitle">{date.toLocaleDateString()}</p>
             <div className="dashboard-divider" />
             <div className="dashboard-actions">
+                
+                <HabitList />
                 <button
                     className="dashboard-button"
                     onClick={() => {
@@ -25,10 +27,8 @@ export default function Dashboard() {
                 <CreateHabit
                     buttonClicked={buttonClicked}
                     setButtonClicked={setButtonClicked}
+                    date={date}
                 />
-                <Link to={`${path}/get-habits`} className="dashboard-link">
-                    <button className="dashboard-button">Get Habits</button>
-                </Link>
             </div>
         </div>
     );

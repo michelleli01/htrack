@@ -5,20 +5,19 @@ import Auth from "../../../auth/Auth";
 import "./CreateHabit.css";
 
 export default function CreateHabit(props) {
-    const date = new Date();
-    const [habitName, setHabitName] = useState('');
-    const [habitDescription, setHabitDescription] = useState('');
-    const [frequency, setFrequency] = useState('Daily');
-    const [error, setError] = useState('');
+    const [habitName, setHabitName] = useState("");
+    const [habitDescription, setHabitDescription] = useState("");
+    const [frequency, setFrequency] = useState("Daily");
+    const [error, setError] = useState("");
 
     async function handleCreateHabit(e) {
         e.preventDefault();
-        setError('')
+        setError("");
         const newHabit = {
             name: habitName,
             description: habitDescription,
             frequency: frequency,
-            start_date: date.toJSON(),
+            start_date: props.date.toJSON(),
         };
 
         await axios({
@@ -30,6 +29,7 @@ export default function CreateHabit(props) {
             .then((res) => {
                 console.log(res);
                 props.setButtonClicked(false);
+                window.location.reload();
             })
             .catch((err) => {
                 console.log(err);
@@ -56,7 +56,7 @@ export default function CreateHabit(props) {
         <div className="create-habit-popup">
             <div className="create-habit">
                 <h3 className="create-habit-header">
-                    {date.toLocaleDateString()}
+                    {props.date.toLocaleDateString()}
                 </h3>
                 <div className="create-habit-divider" />
                 <form className="create-habit-form">

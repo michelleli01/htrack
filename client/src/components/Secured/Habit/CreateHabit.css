@@ -52,6 +52,7 @@
 .create-habit-input {
     margin-top: 10px;
     margin-bottom: 20px;
+    padding: 5px;
 }
 
 .create-habit-select {
@@ -62,6 +63,7 @@
 .create-habit-text-area {
     margin-top: 10px;
     margin-bottom: 20px;
+    padding: 5px;
 }
 
 .create-habit-button {

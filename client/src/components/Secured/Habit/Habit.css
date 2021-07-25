@@ -1,0 +1,46 @@
+.habit{
+    border-radius: 12px;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    width: 70%;
+    margin-bottom: 30px;
+    box-shadow: 0px 0px 20px gray;
+    padding: 5px 0px;
+    position: relative;
+}
+
+.habit-input{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.habit-header{
+    display: inline;
+    font: normal normal bold 32px/40px Poppins;
+}
+
+.habit-subtitle{
+    font: normal normal normal 16px/16px Poppins;
+    margin-left: 35px;
+    letter-spacing: 0.25em;
+    color: gray;
+    text-transform: uppercase;
+}
+
+.habit-text{
+    margin-left: 35px;
+    font: normal normal normal 16px/18px Open Sans;
+}
+
+.habit-edit-button{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    border-radius: 12.5%;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: gray;
+}

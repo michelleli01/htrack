@@ -12,7 +12,6 @@ import Auth from "../../auth/Auth";
 
 import NavBar from "../NavBar/NavBar";
 import Dashboard from "./Dashboard";
-import GetHabit from "./Habit/GetHabit";
 
 export default function Home() {
     const history = useHistory();
@@ -34,7 +33,6 @@ export default function Home() {
             <NavBar handleLogout={handleLogout} />
             <Switch>
                 <Route path={`${path}/:userId/statistics`} />
-                <Route path={`${path}/get-habits`} component={GetHabit} />
                 <Route path={`${path}`} component={Dashboard} />
             </Switch>
         </Router>

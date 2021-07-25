@@ -13,6 +13,14 @@
     color: #34353a;
 }
 
+.dashboard-subtitle{
+    font: normal normal normal 20px/16px Poppins;
+    margin-left: 6em;
+    letter-spacing: 0.25em;
+    color: gray;
+    text-transform: uppercase;
+}
+
 .dashboard-divider {
     margin-left: 7.25em;
     width: 7em;

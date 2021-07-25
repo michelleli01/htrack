@@ -97,6 +97,7 @@ router.delete("/users/:userId/habits/:habitId", (req, res, next) => {
 
 router.put("/users/:userId/habits/:habitId", (req, res, next) => {
     const { name, frequency, description, num_dates, percent_sucess, completed_times } = req.body;
+    
     Habit.findOne({ name: name }).then((habit) => {
         if (habit && habit.name !== name)
             res.status(400).send({

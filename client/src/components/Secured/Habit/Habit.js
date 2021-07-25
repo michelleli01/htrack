@@ -35,8 +35,7 @@ export default function Habit(props) {
             <EditHabit
                 editButtonClicked={editButtonClicked}
                 setEditButtonClicked={setEditButtonClicked}
-                habitId={props.habit._id}
-                name={props.habit.name}
+                habit={props.habit}
                 deleteHabit={deleteHabit}
             />
         </div>

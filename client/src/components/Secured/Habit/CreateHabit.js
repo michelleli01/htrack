@@ -13,7 +13,7 @@ export default function CreateHabit(props) {
 
     async function handleCreateHabit(e) {
         e.preventDefault();
-        
+        setError('')
         const newHabit = {
             name: habitName,
             description: habitDescription,

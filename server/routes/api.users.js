@@ -40,6 +40,9 @@ router.post("/users/:userId/habits", (req, res, next) => {
                     frequency: frequency,
                     description: description,
                     start_date: start_date,
+                    completed_times: 0,
+                    num_dates: 0,
+                    percent_sucess: 0
                 });
 
                 newHabit
@@ -94,7 +97,7 @@ router.delete("/users/:userId/habits/:habitId", (req, res, next) => {
 });
 
 router.put("/users/:userId/habits/:habitId", (req, res, next) => {
-    const { name, frequency, description } = req.body;
+    const { name, frequency, description, num_dates, percent_sucess, completed_times } = req.body;
     Habit.findOne({ name: name }).then((habit) => {
         if (habit && habit.name !== name)
             res.status(400).send({

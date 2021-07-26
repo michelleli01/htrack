@@ -31,11 +31,13 @@ export default function About() {
                             </b>
                         </p>
                         <p className="about-text">
-                            This project was largely inspired by the book Atomic
-                            Habits by James Clear. After reading this book, I
-                            was determined to create something that allowed me
-                            to use some of the tips provided in the book to help
-                            improve my own life.
+                            I started this project in July 2021 to
+                            enhance and expand my knowledge in web development.
+                            This is my first major project which I worked on
+                            independently and in my free time. I used the
+                            ReactJS for frontend programming with ExpressJS
+                            and NodeJS for backend progamming in addition
+                            to MongoDB for storage.
                         </p>
                         <Link
                             to="contact"

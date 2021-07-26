@@ -10,10 +10,10 @@ import "./Habit.css";
 export default function Habit(props) {
     const [editButtonClicked, setEditButtonClicked] = useState(false);
 
-    async function handleCompleted(e) {
+    function handleCompleted(e) {
         var completed = e.target.checked;
 
-        await axios({
+        axios({
             method: "GET",
             withCredentials: true,
             url: `/api/users/${Auth.getToken()}/habits/${props.habit._id}`,
@@ -25,12 +25,14 @@ export default function Habit(props) {
                 var days =
                     moment.duration(moment().diff(habit.start_date, "days")) +
                     1;
-                if (completed && habit.completed_times < days) {
-                    var completed_times = habit.completed_times + 1;
-                } else {
-                    if (completed_times >= 1) {
-                        var completed_times = habit.completed_times - 1;
-                    }
+                var completed_times = habit.completed_times;
+                if(completed){
+                    console.log(completed_times)
+                    completed_times = completed_times+1;
+                    console.log(completed_times)
+                }
+                else{
+                    completed_times = completed_times-1;
                 }
                 var percent_success = (completed_times / days) * 100;
 
@@ -39,6 +41,7 @@ export default function Habit(props) {
                     days,
                     percent_success,
                 };
+                console.log(completed_times)
 
                 updateHabitStatistics(updatedHabit, habit._id);
             })
@@ -47,8 +50,9 @@ export default function Habit(props) {
             });
     }
 
-    async function updateHabitStatistics(updatedHabit, habit_id) {
-        await axios({
+    function updateHabitStatistics(updatedHabit, habit_id) {
+        console.log(updatedHabit)
+        axios({
             method: "PUT",
             withCredentials: true,
             data: updatedHabit,

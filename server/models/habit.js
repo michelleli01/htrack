@@ -6,7 +6,7 @@ const habit = new mongoose.Schema({
     description: String,
     start_date: Date,
     completed_times: Number,
-    num_dates: Number,
+    days: Number,
     percent_success: Number
 });
 

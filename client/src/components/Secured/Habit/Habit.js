@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { RiEditBoxLine } from "react-icons/ri";
 import EditHabit from "./EditHabit";
 import axios from "axios";
@@ -10,56 +10,36 @@ import "./Habit.css";
 export default function Habit(props) {
     const [editButtonClicked, setEditButtonClicked] = useState(false);
 
-    function handleCompleted(e) {
+    async function handleCompleted(e) {
+        console.log(props.habit);
         var completed = e.target.checked;
 
-        axios({
-            method: "GET",
-            withCredentials: true,
-            url: `/api/users/${Auth.getToken()}/habits/${props.habit._id}`,
-        })
-            .then((res) => {
-                const habit = res.data.habit;
-                console.log(habit);
+        var days =
+            moment.duration(moment().diff(props.habit.start_date, "days")) + 1;
+        var completed_times = props.habit.completed_times;
 
-                var days =
-                    moment.duration(moment().diff(habit.start_date, "days")) +
-                    1;
-                var completed_times = habit.completed_times;
-                if(completed){
-                    console.log(completed_times)
-                    completed_times = completed_times+1;
-                    console.log(completed_times)
-                }
-                else{
-                    completed_times = completed_times-1;
-                }
-                var percent_success = (completed_times / days) * 100;
+        if (completed) {
+            completed_times += 1;
+        } else {
+            completed_times -= 1;
+        }
 
-                const updatedHabit = {
-                    completed_times,
-                    days,
-                    percent_success,
-                };
-                console.log(completed_times)
+        var percent_success = (completed_times / days) * 100;
 
-                updateHabitStatistics(updatedHabit, habit._id);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }
+        const updatedHabit = {
+            completed_times,
+            days,
+            percent_success,
+        };
 
-    function updateHabitStatistics(updatedHabit, habit_id) {
-        console.log(updatedHabit)
-        axios({
+        await axios({
             method: "PUT",
             withCredentials: true,
             data: updatedHabit,
-            url: `/api/users/${Auth.getToken()}/habits/${habit_id}`,
+            url: `/api/users/${Auth.getToken()}/habits/${props.habit._id}`,
         })
             .then((res) => {
-                console.log(res.data);
+                console.log(res.data.message);
             })
             .catch((err) => {
                 console.log(err);

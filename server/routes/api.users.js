@@ -100,85 +100,60 @@ router.put("/users/:userId/habits/:habitId/", (req, res, next) => {
         description,
         days,
         percent_success,
-        completed_times,
+        completed_times
     } = req.body;
-    Habit.findOne({ name: name }).then((habit) => {
-        if (habit && habit.name !== name) {
-            res.status(400).json({
-                message: "Habit with that name already exists",
-            });
-        }
-    });
-    if (name) {
-        if (name.trim() !== "") {
-            Habit.updateOne(
-                {
-                    user_id: req.params.userId,
-                    _id: req.params.habitId,
-                },
-                { name: name }
-            ).catch((err) => {
-                console.log(err);
-            });
-        }
+
+    const newHabit = {};
+
+    if (name && name.trim() !== "") {
+        Habit.findOne({ name: name }).then((habit) => {
+            if (habit && habit.name !== name) {
+                return res
+                    .status(400)
+                    .json({ message: "Habit with that name already exists" });
+            }
+        });
+
+        newHabit["name"] = name;
     }
 
     if (frequency) {
-        Habit.updateOne(
-            {
-                user_id: req.params.userId,
-                _id: req.params.habitId,
-            },
-            { frequency: frequency }
-        );
+        newHabit["frequency"] = frequency;
     }
 
-    if (description) {
-        if (description.trim() !== "") {
-            Habit.updateOne(
-                { user_id: req.params.userId, _id: req.params.habitId },
-                {
-                    description: description,
-                }
-            ).catch((err) => {
-                console.log(err);
-            });
-        }
+    if (description && description.trim() !== "") {
+        newHabit["description"] = description;
     }
 
     if (days) {
-        Habit.updateOne(
-            { user_id: req.params.userId, _id: req.params.habitId },
-            {
-                days: days,
-            }
-        ).catch((err) => {
-            console.log(err);
-        });
-    }
-    if (percent_success || percent_success === 0) {
-        Habit.updateOne(
-            { user_id: req.params.userId, _id: req.params.habitId },
-            {
-                percent_success: percent_success,
-            }
-        ).catch((err) => {
-            console.log(err);
-        });
+        newHabit["days"] = days;
     }
 
     if (completed_times || completed_times === 0) {
-        Habit.updateOne(
-            { user_id: req.params.userId, _id: req.params.habitId },
-            {
-                completed_times: completed_times,
-            }
-        );
-    } else {
-        Habit.findOne({_id: req.params.habitId})
-        .then(habit => console.log(habit))
-        res.status(200).json({ message: "Habit updated successfully" });
+        newHabit["completed_times"] = completed_times;
     }
+
+    if (percent_success || percent_success === 0) {
+        newHabit["percent_success"] = percent_success;
+    }
+
+    console.log(newHabit);
+
+    Habit.updateOne(
+        { user_id: req.params.userId, _id: req.params.habitId },
+        newHabit
+    )
+        .then(() => {
+            return res
+                .status(200)
+                .json({ message: "Habit updated successfully" });
+        })
+        .catch((err) => {
+            console.log(err);
+            return res
+                .status(500)
+                .json({ message: "Unable to update habit at this time" });
+        });
 });
 
 module.exports = router;

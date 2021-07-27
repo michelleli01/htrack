@@ -1,6 +1,6 @@
 .dashboard {
-    width: 100%;
-    height: 100%;
+    margin-top: 150px;
+    height: 990px;
 }
 
 .dashboard-header {
@@ -13,7 +13,7 @@
     color: #34353a;
 }
 
-.dashboard-subtitle{
+.dashboard-subtitle {
     font: normal normal normal 20px/16px Poppins;
     margin-left: 6em;
     letter-spacing: 0.25em;
@@ -60,4 +60,9 @@
 .dashboard-link {
     text-decoration: none;
     display: block;
+}
+
+.calendar {
+    display: block;
+    height: 65vh;
 }

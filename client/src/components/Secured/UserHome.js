@@ -7,15 +7,18 @@ import {
     useHistory,
     useRouteMatch,
 } from "react-router-dom";
+import { Element } from "react-scroll";
 
 import Auth from "../../auth/Auth";
 
 import NavBar from "../NavBar/NavBar";
 import Dashboard from "./Dashboard";
+import Statistics from "./Statistics/Statistics";
+
+import './UserHome.css'
 
 export default function Home() {
     const history = useHistory();
-    let { path } = useRouteMatch();
 
     function handleLogout(e) {
         e.preventDefault();
@@ -29,12 +32,12 @@ export default function Home() {
     }
 
     return (
-        <Router>
+        <div className="userhome">
             <NavBar handleLogout={handleLogout} />
-            <Switch>
-                <Route path={`${path}/:userId/statistics`} />
-                <Route path={`${path}`} component={Dashboard} />
-            </Switch>
-        </Router>
+            <Dashboard />
+            <Element id="statistics">
+                <Statistics />
+            </Element>
+        </div>
     );
 }

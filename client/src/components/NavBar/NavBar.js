@@ -94,6 +94,17 @@ export default function NavBar(props) {
                         className="mr-auto justify-content-end"
                         style={{ width: "100%" }}
                     >
+                        <Link
+                            className="link"
+                            to="statistics"
+                            activeClass="active"
+                            spy={true}
+                            smooth={true}
+                            offset={-10}
+                            duration={10}
+                        >
+                            Statistics
+                        </Link>
                         <button
                             className="button button-link"
                             onClick={props.handleLogout}

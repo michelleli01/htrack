@@ -11,3 +11,11 @@
     padding-top: 30px;
     margin-bottom: 10px;
 }
+
+.calendar-date{
+    background-color: rgb(245, 245, 245);
+    margin-right: 15px;
+    padding-top: 10px;
+    height: 65vh;
+    box-shadow: 3px 4px 0px 0px gray;
+}

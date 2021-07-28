@@ -15,7 +15,7 @@ export default function Dashboard() {
             <p className="dashboard-subtitle">{new Date().toLocaleDateString()}</p>
             <div className="dashboard-divider" />
             <Row>
-                <Col sm={3} className="dashboard-actions">
+                <Col sm={2} className="dashboard-actions">
                     <HabitList />
                     <button
                         className="dashboard-button"
@@ -30,7 +30,7 @@ export default function Dashboard() {
                         setCreateButtonClicked={setCreateButtonClicked}
                     />
                 </Col>
-                <Col md={8}>
+                <Col md={9}>
                     <Calendar />
                 </Col>
             </Row>

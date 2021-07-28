@@ -26,14 +26,15 @@ export default function Date(props) {
 
     return (
         <div>
-            <h3 className="date-header">{props.date.format("MM/DD/YYYY")}</h3>
-            <div className="date-divider" />
+            <h3 className="date-header">{ props.date.format('dddd')}</h3>
+            <p className="date-subtitle">{props.date.format('MM/DD')}</p>
+
             {habits.map((habit) => {
                 return (
                     <div className="habit-container">
                         <h3
                             className="habit-name"
-                            style={{ color: `#${habit.color}` }}
+                            style={{ backgroundColor: `#${habit.color}` }}
                         >
                             {habit.name}
                         </h3>

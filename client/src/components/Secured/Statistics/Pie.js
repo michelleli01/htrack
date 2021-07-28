@@ -3,6 +3,7 @@ import * as React from "react";
 import axios from "axios";
 import Auth from "../../../auth/Auth";
 
+import "./Pie.css";
 export default class App extends React.Component {
     constructor(props) {
         super(props);
@@ -11,6 +12,7 @@ export default class App extends React.Component {
             colors: [],
         };
     }
+
     componentDidMount() {
         axios({
             method: "GET",
@@ -20,10 +22,9 @@ export default class App extends React.Component {
             .then((res) => {
                 this.setState({ data: res.data.newHabits });
                 const newColors = [];
-                res.data.newHabits.map((habit) => {
-                    newColors.push(`${habit.color}`);
-                    return;
-                });
+                res.data.newHabits.forEach(function(habit){
+                    newColors.push(habit.color);
+                })
                 this.setState({ colors: newColors });
             })
             .catch((err) => {
@@ -36,7 +37,7 @@ export default class App extends React.Component {
             <Chart
                 forceFit
                 data={this.state.data}
-                height={600}
+                height={400}
                 padding={[50, 50, 50, 50]}
             >
                 <Tooltip />

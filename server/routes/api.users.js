@@ -19,7 +19,8 @@ router.get("/users/:userId/habits", (req, res, next) => {
 });
 
 router.post("/users/:userId/habits", (req, res, next) => {
-    const { name, description, frequency, start_date, date_next } = req.body;
+    const { name, description, frequency, start_date, next_week, color } =
+        req.body;
 
     if (name.trim() === "" || frequency.trim() === "" || !start_date) {
         res.status(400).json({ message: "Please enter all fields" });
@@ -37,7 +38,8 @@ router.post("/users/:userId/habits", (req, res, next) => {
                     frequency: frequency,
                     description: description,
                     start_date: start_date,
-                    date_next: date_next,
+                    next_week: next_week,
+                    color: color,
                     completed_times: 0,
                     days: 0,
                     percent_sucess: 0,
@@ -87,7 +89,7 @@ router.post("/users/:userId/habits/date", (req, res, next) => {
         return res.status(400).json({ message: "Please specify a date" });
     }
 
-    Habit.find({ user_id: req.params.userId, date_next: date })
+    Habit.find({ user_id: req.params.userId, next_week: { $all: [date] } })
         .then((habits) => [
             res.status(200).json({
                 message: "Retrieved habits on this date",
@@ -124,7 +126,8 @@ router.put("/users/:userId/habits/:habitId/", (req, res, next) => {
         days,
         percent_success,
         completed_times,
-        date_next,
+        next_week,
+        color,
     } = req.body;
 
     const newHabit = {};
@@ -161,8 +164,12 @@ router.put("/users/:userId/habits/:habitId/", (req, res, next) => {
         newHabit["percent_success"] = percent_success;
     }
 
-    if (date_next) {
-        newHabit["date_next"] = date_next;
+    if (next_week) {
+        newHabit["next_week"] = next_week;
+    }
+
+    if (color) {
+        newHabit["color"] = color;
     }
 
     console.log(newHabit);

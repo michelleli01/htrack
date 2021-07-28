@@ -14,13 +14,11 @@
 }
 
 .habit-name {
-    color: #1c6e40;
     font: normal normal bold 20px/32px Open Sans;
     margin-top: 10px;
     margin-bottom: 20px;
     border-radius: 12px;
     padding-left: 7px;
     border-style: solid;
-    border-color: #1c6e40;
     letter-spacing: 1px;
 }

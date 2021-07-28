@@ -21,9 +21,8 @@
 
 input[type="checkbox"]:checked + .habit-header {
     text-decoration: line-through;
-    color: gray
+    color: gray !important;
 }
-
 
 .habit-subtitle {
     font: normal normal normal 16px/16px Poppins;
@@ -40,9 +39,8 @@ input[type="checkbox"]:checked + .habit-header {
 
 input[type="checkbox"]:checked + .habit-text {
     text-decoration: line-through;
-    color: gray
+    color: gray;
 }
-
 
 .habit-edit-button {
     position: absolute;

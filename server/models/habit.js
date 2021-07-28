@@ -11,7 +11,8 @@ const habit = new mongoose.Schema({
     completed_times: Number,
     days: Number,
     percent_success: Number,
-    date_next: Date
+    next_week: Array,
+    color: String
 });
 
 module.exports = mongoose.model("Habit", habit);

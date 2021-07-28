@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Auth from "../../../auth/Auth";
-import Habit from "../Habit/Habit";
 
 import "./Date.css";
 
@@ -32,7 +31,12 @@ export default function Date(props) {
             {habits.map((habit) => {
                 return (
                     <div className="habit-container">
-                        <h3 className="habit-name">{habit.name}</h3>
+                        <h3
+                            className="habit-name"
+                            style={{ color: `#${habit.color}` }}
+                        >
+                            {habit.name}
+                        </h3>
                     </div>
                 );
             })}

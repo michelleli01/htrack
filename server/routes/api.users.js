@@ -1,4 +1,5 @@
 const express = require("express");
+const habit = require("../models/habit");
 const router = express.Router();
 const Habit = require("../models/habit");
 
@@ -14,6 +15,31 @@ router.get("/users/:userId/habits", (req, res, next) => {
             console.log(err.message);
             res.status(400).json({
                 message: "Unable to retrieve habits at this time",
+            });
+        });
+});
+
+router.get("/users/:userId/habits/condensed", (req, res, next) => {
+    Habit.find({ user_id: req.params.userId })
+        .then((habits) => {
+            var newHabits = [];
+            habits.map((habit) => {
+                newHabits.push({
+                    name: habit.name,
+                    completed_times: habit.completed_times,
+                    color: habit.color
+                });
+            });
+            console.log(newHabits);
+
+            res.status(200).json({
+                newHabits,
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json({
+                message: "Unable to retrieve habits at this time.",
             });
         });
 });

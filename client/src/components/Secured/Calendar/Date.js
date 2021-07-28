@@ -34,7 +34,7 @@ export default function Date(props) {
                     <div className="habit-container">
                         <h3
                             className="habit-name"
-                            style={{ backgroundColor: `#${habit.color}` }}
+                            style={{ backgroundColor: `${habit.color}` }}
                         >
                             {habit.name}
                         </h3>

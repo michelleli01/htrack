@@ -1,0 +1,43 @@
+#canvas .g2-tooltip {
+    position: absolute;
+    visibility: hidden;
+    border-style: solid;
+    white-space: nowrap;
+    z-index: 9;
+    transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+        top 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    background-color: rgb(255, 255, 255);
+    border-width: 1px;
+    border-color: #999;
+    border-radius: 4px;
+    color: #444;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-stretch: normal;
+    font-size: 14px;
+    font-family: sans-serif;
+    line-height: 21px;
+    padding: 5px;
+}
+
+#canvas .g2-tooltip-list {
+    margin: 5px;
+    list-style-type: none;
+    padding: 0;
+}
+#canvas .g2-legend {
+    top: 45% !important;
+}
+.g2-legend {
+    position: absolute;
+}
+.g2-legend-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.g2-legend-list-item {
+    cursor: pointer;
+    font-size: 14px;
+}

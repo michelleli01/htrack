@@ -56,14 +56,14 @@ export default function Habit(props) {
             />
             <h3
                 className="habit-header"
-                style={{ color: `#${props.habit.color}` }}
+                style={{ color: `${props.habit.color}` }}
             >
                 {props.habit.name}
             </h3>
             <p className="habit-subtitle">{props.habit.frequency}</p>
             <p className="habit-text">{props.habit.description}</p>
             <button
-                style={{ color: `#${props.habit.color}` }}
+                style={{ color: `${props.habit.color}` }}
                 className="habit-edit-button"
                 onClick={(e) => {
                     setEditButtonClicked(true);

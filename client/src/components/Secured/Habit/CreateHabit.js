@@ -32,7 +32,7 @@ export default function CreateHabit(props) {
         }
 
         var color = Math.floor(Math.random() * 16777215).toString(16);
-        newHabit["color"] = color;
+        newHabit["color"] = `#${color}`;
 
         await axios({
             method: "POST",

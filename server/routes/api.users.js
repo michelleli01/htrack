@@ -19,7 +19,7 @@ router.get("/users/:userId/habits", (req, res, next) => {
 });
 
 router.post("/users/:userId/habits", (req, res, next) => {
-    const { name, description, frequency, start_date } = req.body;
+    const { name, description, frequency, start_date, date_next } = req.body;
 
     if (name.trim() === "" || frequency.trim() === "" || !start_date) {
         res.status(400).json({ message: "Please enter all fields" });
@@ -37,6 +37,7 @@ router.post("/users/:userId/habits", (req, res, next) => {
                     frequency: frequency,
                     description: description,
                     start_date: start_date,
+                    date_next: date_next,
                     completed_times: 0,
                     days: 0,
                     percent_sucess: 0,
@@ -63,6 +64,7 @@ router.post("/users/:userId/habits", (req, res, next) => {
 });
 
 router.get("/users/:userId/habits/:habitId", (req, res, next) => {
+    console.log("hello");
     Habit.findOne({ user_id: req.params.userId, _id: req.params.habitId })
         .then((habit) => {
             res.status(200).json({
@@ -74,6 +76,27 @@ router.get("/users/:userId/habits/:habitId", (req, res, next) => {
             console.log(err.message);
             res.status(400).json({
                 message: "Unable to retrieve habit at this time",
+            });
+        });
+});
+
+router.post("/users/:userId/habits/date", (req, res, next) => {
+    const { date } = req.body;
+
+    if (!date) {
+        return res.status(400).json({ message: "Please specify a date" });
+    }
+
+    Habit.find({ user_id: req.params.userId, date_next: date })
+        .then((habits) => [
+            res.status(200).json({
+                message: "Retrieved habits on this date",
+                habits,
+            }),
+        ])
+        .catch((err) => {
+            res.status(500).json({
+                message: "Unable to retrieve habits on this date",
             });
         });
 });
@@ -100,7 +123,8 @@ router.put("/users/:userId/habits/:habitId/", (req, res, next) => {
         description,
         days,
         percent_success,
-        completed_times
+        completed_times,
+        date_next,
     } = req.body;
 
     const newHabit = {};
@@ -135,6 +159,10 @@ router.put("/users/:userId/habits/:habitId/", (req, res, next) => {
 
     if (percent_success || percent_success === 0) {
         newHabit["percent_success"] = percent_success;
+    }
+
+    if (date_next) {
+        newHabit["date_next"] = date_next;
     }
 
     console.log(newHabit);

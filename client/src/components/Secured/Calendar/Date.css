@@ -1,0 +1,26 @@
+.date-header {
+    margin-top: 20px;
+    display: inline;
+    font: normal normal bold 26px/32px Poppins;
+}
+
+.date-divider {
+    width: 3em;
+    height: 0.25em;
+    background: gray 0% 0% no-repeat padding-box;
+    opacity: 1;
+    text-align: left;
+    position: relative;
+}
+
+.habit-name {
+    color: #1c6e40;
+    font: normal normal bold 20px/32px Open Sans;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    padding-left: 7px;
+    border-style: solid;
+    border-color: #1c6e40;
+    letter-spacing: 1px;
+}

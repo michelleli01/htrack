@@ -7,13 +7,12 @@ import Calendar from "./Calendar/Calendar";
 import "./Dashboard.css";
 
 export default function Dashboard() {
-    const date = new Date();
     const [createButtonClicked, setCreateButtonClicked] = useState(false);
 
     return (
         <Container fluid className="dashboard">
             <h3 className="dashboard-header">Dashboard</h3>
-            <p className="dashboard-subtitle">{date.toLocaleDateString()}</p>
+            <p className="dashboard-subtitle">{new Date().toLocaleDateString()}</p>
             <div className="dashboard-divider" />
             <Row>
                 <Col sm={3} className="dashboard-actions">
@@ -29,11 +28,10 @@ export default function Dashboard() {
                     <CreateHabit
                         createButtonClicked={createButtonClicked}
                         setCreateButtonClicked={setCreateButtonClicked}
-                        date={date}
                     />
                 </Col>
                 <Col md={8}>
-                    <Calendar date={date} />
+                    <Calendar />
                 </Col>
             </Row>
             

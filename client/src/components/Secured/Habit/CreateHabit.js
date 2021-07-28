@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Auth from "../../../auth/Auth";
+import moment from "moment";
 
 import "./CreateHabit.css";
 
@@ -14,12 +15,19 @@ export default function CreateHabit(props) {
         e.preventDefault();
         setError("");
 
-        const newHabit = {
+        var newHabit = {
             name: habitName,
             description: habitDescription,
             frequency: frequency,
-            start_date: props.date.toJSON(),
+            start_date: moment().format('YYYY-MM-DD'),
         };
+
+        if (frequency === "Daily") {
+            const date_next = moment().add(1, "day").format('YYYY-MM-DD');
+            newHabit["date_next"] = date_next;
+        }
+
+        console.log(newHabit);
 
         await axios({
             method: "POST",
@@ -57,7 +65,7 @@ export default function CreateHabit(props) {
         <div className="create-habit-popup">
             <div className="create-habit">
                 <h3 className="create-habit-header">
-                    {props.date.toLocaleDateString()}
+                    {new Date().toLocaleDateString()}
                 </h3>
                 <div className="create-habit-divider" />
                 <form className="create-habit-form">

@@ -32,26 +32,11 @@ export default function Habit(props) {
             });
     }, []);
 
-    function handleCompleted(e) {
-        console.log(props.habit);
-        var completed = e.target.checked;
-
-        var days =
-            moment.duration(moment().diff(props.habit.start_date, "days")) + 1;
-
-        const next_week = props.habit.next_week;
-        const index = next_week.indexOf(moment.format("YYYY-MM-DD"));
-        if (index > -1) {
-            next_week.splice(index, 1);
-        }
-
-    }
 
     return (
         <div className="habit">
             <input
                 type="checkbox"
-                // onChange={handleCompleted}
                 className="habit-input"
             />
             <h3

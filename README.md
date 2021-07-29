@@ -9,7 +9,7 @@ I began this project mid-July 2021 and used ReactJS to code the frontend portion
 #### Homepage
 ![HTRACK_HOMEPAGE_DEMO](https://user-images.githubusercontent.com/11303631/126930427-d7e4fba5-976e-4980-9cae-11d55fc7769c.gif)
 
-#### Login and Signup
+#### Authentication
 ![HTRACK_AUTHENTICATION_DEMO](https://user-images.githubusercontent.com/11303631/127429751-a54dc4c5-340b-4048-befb-26b72677d89d.gif)
 
 #### Dashboard

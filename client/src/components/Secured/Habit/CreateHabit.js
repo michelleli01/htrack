@@ -1,20 +1,45 @@
 import React, { useState } from "react";
+import axios from "axios";
+import Auth from "../../../auth/Auth";
+import moment from "moment";
 
 import "./CreateHabit.css";
 
 export default function CreateHabit(props) {
-    const date = new Date();
-    const [habitName, setHabitName] = useState();
-    const [habitDescription, setHabitDescription] = useState();
-    const [frequency, setFrequency] = useState();
+    const [habitName, setHabitName] = useState("");
+    const [habitDescription, setHabitDescription] = useState("");
+    const [frequency, setFrequency] = useState([]);
+    const [error, setError] = useState("");
 
-    function handleCreateHabit(e) {
+    async function handleCreateHabit(e) {
         e.preventDefault();
-        const newHabit = {
+        setError("");
+
+        var newHabit = {
             name: habitName,
             description: habitDescription,
             frequency: frequency,
+            start_date: moment().format("YYYY-MM-DD"),
         };
+
+        var color = Math.floor(Math.random() * 16777215).toString(16);
+        newHabit["color"] = `#${color}`;
+
+        await axios({
+            method: "POST",
+            data: newHabit,
+            withCredentials: true,
+            url: `/api/users/${Auth.getToken()}/habits`,
+        })
+            .then((res) => {
+                console.log(res);
+                props.setCreateButtonClicked(false);
+                window.location.reload();
+            })
+            .catch((err) => {
+                console.log(err);
+                setError(err.response.data.message);
+            });
     }
 
     function handleNameChange(e) {
@@ -28,18 +53,20 @@ export default function CreateHabit(props) {
     }
 
     function handleFrequencyChange(e) {
-        e.preventDefault();
-        setFrequency(e.target.value);
+        var target = e.target;
+        var value = Array.from(target.selectedOptions, (option) => option.value);
+        setFrequency(value);
     }
 
-    return props.buttonClicked ? (
+    return props.createButtonClicked ? (
         <div className="create-habit-popup">
             <div className="create-habit">
                 <h3 className="create-habit-header">
-                    {date.toLocaleDateString()}
+                    {new Date().toLocaleDateString()}
                 </h3>
                 <div className="create-habit-divider" />
                 <form className="create-habit-form">
+                    {error && <p className="create-habit-error">{error}</p>}
                     <label className="create-habit-label">Name</label>
                     <input
                         type="text"
@@ -48,14 +75,49 @@ export default function CreateHabit(props) {
                         onChange={handleNameChange}
                     />
                     <label className="create-habit-label">Frequency</label>
+                    <b>use the ctrl key to select multiple days</b>
+                    <br />
                     <select
                         className="create-habit-select"
+                        multiple={true}
                         onChange={handleFrequencyChange}
                     >
-                        <option className="create-habit-option">Daily</option>
-                        <option className="create-habit-option">Weekly</option>
-                        <option className="create-habit-option">Monthly</option>
-                        <option className="create-habit-option">Yearly</option>
+                        <option className="create-habit-option" value="Monday">
+                            Monday
+                        </option>
+                        <option className="create-habit-option" value="Tuesday">
+                            Tuesday
+                        </option>
+                        <option
+                            className="create-habit-option"
+                            value="Wednesday"
+                        >
+                            Wednesday
+                        </option>
+                        <option
+                            className="create-habit-option"
+                            value="Thursday"
+                        >
+                            Thursday
+                        </option>
+                        <option
+                            className="create-habit-option"
+                            value="Friday"
+                        >
+                            Friday
+                        </option>
+                        <option
+                            className="create-habit-option"
+                            value="Saturday"
+                        >
+                            Saturday
+                        </option>
+                        <option
+                            className="create-habit-option"
+                            value="Sunday"
+                        >
+                            Sunday
+                        </option>
                     </select>
                     <label className="create-habit-label">Description</label>
                     <textarea
@@ -71,7 +133,7 @@ export default function CreateHabit(props) {
                         Create Habit
                     </button>
                     <button
-                        onClick={() => props.setButtonClicked(false)}
+                        onClick={() => props.setCreateButtonClicked(false)}
                         className="create-habit-close-button"
                     >
                         Close

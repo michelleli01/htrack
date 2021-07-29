@@ -56,15 +56,26 @@
 
 .about-text{
     width: 640px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     text-align: left;
     font: normal normal normal 20px/30px Open Sans;
     letter-spacing: 0px;
     color: #353535;
 }
 
+.about-link{
+    display: block;
+    text-decoration: none;
+    color:#1c6e40;
+    font: normal normal bold 14px/16px Open Sans;
+}
+
+.github-logo{
+    margin-right: 10px;
+}
+
 .contact-button{
-    margin-top: 1em;
+    margin-top: .5em;
     width: 200px;
     height: 50px;
     background: transparent linear-gradient(106deg, #49ec8d 0%, #49ec8d 100%) 0% 0% no-repeat padding-box;

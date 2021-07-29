@@ -1,4 +1,4 @@
-.create-habit-popup {
+.edit-habit-popup {
     position: fixed;
     top: 0;
     left: 0;
@@ -12,7 +12,7 @@
     text-align: left;
 }
 
-.create-habit{
+.edit-habit{
     margin-top: 100px;
     position: relative;
     padding: 32px;
@@ -22,7 +22,8 @@
     border-radius: 12px;
 }
 
-.create-habit-header {
+.edit-habit-header {
+    margin-top: 10px;
     margin-bottom: 25px;
     text-align: left;
     position: relative;
@@ -30,7 +31,7 @@
     color: #34353a;
 }
 
-.create-habit-divider {
+.edit-habit-divider {
     width: 7.5em;
     height: 0.5em;
     background: #1c6e40 0% 0% no-repeat padding-box;
@@ -39,36 +40,58 @@
     margin-bottom: 5%;
 }
 
-.create-habit-form {
+.edit-habit-form {
     width: 100%;
     height: 100%;
 }
 
-.create-habit-label {
+.edit-habit-label {
     margin-top: 10px;
     display: block;
 }
 
-.create-habit-input {
+.edit-habit-input {
     margin-top: 10px;
     margin-bottom: 20px;
     padding: 5px;
 }
 
-.create-habit-select {
+.edit-habit-select {
     margin-top: 10px;
     margin-bottom: 20px;
 }
 
-.create-habit-text-area {
+.edit-habit-text-area {
     margin-top: 10px;
     margin-bottom: 20px;
     padding: 5px;
+    display: block;
 }
 
-.create-habit-button {
+.delete-habit-button {
     margin-top: 1em;
-    width: 200px;
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    background: transparent linear-gradient(106deg, #ff5f5f 0%, #ff5f5f 100%) 0%
+        0% no-repeat padding-box;
+    border-radius: 12px;
+    border-width: 0;
+    font: normal normal bold 20px/30px Poppins;
+    letter-spacing: 0.5px;
+    color: #881919;
+    display: inline-block;
+}
+
+.delete-habit-button:hover {
+    background: transparent linear-gradient(106deg, #ff5f5f 0%, #cf2f2f 100%) 0%
+        0% no-repeat padding-box;
+    opacity: 1;
+}
+
+.edit-habit-button {
+    margin-top: 1em;
+    width: 150px;
     height: 50px;
     text-align: center;
     background: transparent linear-gradient(106deg, #49ec8d 0%, #49ec8d 100%) 0%
@@ -78,16 +101,17 @@
     font: normal normal bold 20px/30px Poppins;
     letter-spacing: 0.5px;
     color: #1c6e40;
-    display: block;
+    display: inline-block;
+    margin-right: 35px;
 }
 
-.create-habit-button:hover {
+.edit-habit-button:hover {
     background: transparent linear-gradient(106deg, #49ec8d 0%, #30c26d 100%) 0%
         0% no-repeat padding-box;
     opacity: 1;
 }
 
-.create-habit-close-button {
+.edit-habit-close-button {
     position: absolute;
     top: 20px;
     right: 20px;
@@ -100,11 +124,11 @@
     color: gray;
 }
 
-.create-habit-close-button:hover{
+.edit-habit-close-button:hover{
     color:#1c6e40;
 }
 
-.create-habit-error{
+.edit-habit-error{
     color: red;
     font-weight: 700;
 }

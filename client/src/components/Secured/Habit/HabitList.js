@@ -13,7 +13,7 @@ export default class HabitList extends React.Component {
         this.state = {
             error: "",
             habits: [],
-            showCompleted: true,
+            showCompleted: false,
         };
     }
 

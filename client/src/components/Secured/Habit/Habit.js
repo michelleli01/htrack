@@ -28,6 +28,9 @@ export default function Habit(props) {
                     } else {
                         console.log(res.data.status);
                         setComplete(res.data.status.complete);
+                        if (!props.showCompleted) {
+                            setRender(!res.data.status.complete);
+                        }
                     }
                 })
                 .catch((err) => {

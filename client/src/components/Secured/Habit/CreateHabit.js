@@ -22,15 +22,6 @@ export default function CreateHabit(props) {
             start_date: moment().format("YYYY-MM-DD"),
         };
 
-        const next_week = [];
-        if (frequency === "Daily") {
-            for (let i = 0; i < 7; i++) {
-                next_week.push(moment().add(i, "day").format("YYYY-MM-DD"));
-            }
-
-            newHabit["next_week"] = next_week;
-        }
-
         var color = Math.floor(Math.random() * 16777215).toString(16);
         newHabit["color"] = `#${color}`;
 

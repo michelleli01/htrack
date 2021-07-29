@@ -7,22 +7,7 @@ import "./Date.css";
 export default function Date(props) {
     const [habits, setHabits] = useState([]);
 
-    useEffect(() => {
-        axios({
-            method: "POST",
-            withCredentials: true,
-            data: {
-                date: props.date.format("YYYY-MM-DD"),
-            },
-            url: `/api/users/${Auth.getToken()}/habits/date`,
-        })
-            .then((res) => {
-                setHabits(res.data.habits);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }, []);
+    
 
     return (
         <div>

@@ -8,10 +8,6 @@ const habit = new mongoose.Schema({
     frequency: String,
     description: String,
     start_date: Date,
-    completed_times: Number,
-    days: Number,
-    percent_success: Number,
-    next_week: Array,
     color: String
 });
 

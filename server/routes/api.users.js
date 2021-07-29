@@ -1,8 +1,8 @@
 const express = require("express");
-const habit = require("../models/habit");
 const router = express.Router();
 const Habit = require("../models/habit");
 
+// get all user's habits
 router.get("/users/:userId/habits", (req, res, next) => {
     Habit.find({ user_id: req.params.userId })
         .then((habits) => {
@@ -19,34 +19,9 @@ router.get("/users/:userId/habits", (req, res, next) => {
         });
 });
 
-router.get("/users/:userId/habits/condensed", (req, res, next) => {
-    Habit.find({ user_id: req.params.userId })
-        .then((habits) => {
-            var newHabits = [];
-            habits.map((habit) => {
-                newHabits.push({
-                    name: habit.name,
-                    completed_times: habit.completed_times,
-                    color: habit.color
-                });
-            });
-            console.log(newHabits);
-
-            res.status(200).json({
-                newHabits,
-            });
-        })
-        .catch((err) => {
-            console.log(err);
-            res.status(500).json({
-                message: "Unable to retrieve habits at this time.",
-            });
-        });
-});
-
+// create new habit
 router.post("/users/:userId/habits", (req, res, next) => {
-    const { name, description, frequency, start_date, next_week, color } =
-        req.body;
+    const { name, description, frequency, start_date, color } = req.body;
 
     if (name.trim() === "" || frequency.trim() === "" || !start_date) {
         res.status(400).json({ message: "Please enter all fields" });
@@ -64,11 +39,7 @@ router.post("/users/:userId/habits", (req, res, next) => {
                     frequency: frequency,
                     description: description,
                     start_date: start_date,
-                    next_week: next_week,
                     color: color,
-                    completed_times: 0,
-                    days: 0,
-                    percent_sucess: 0,
                 });
 
                 newHabit
@@ -91,8 +62,8 @@ router.post("/users/:userId/habits", (req, res, next) => {
     }
 });
 
+// get specific habit
 router.get("/users/:userId/habits/:habitId", (req, res, next) => {
-    console.log("hello");
     Habit.findOne({ user_id: req.params.userId, _id: req.params.habitId })
         .then((habit) => {
             res.status(200).json({
@@ -108,27 +79,7 @@ router.get("/users/:userId/habits/:habitId", (req, res, next) => {
         });
 });
 
-router.post("/users/:userId/habits/date", (req, res, next) => {
-    const { date } = req.body;
-
-    if (!date) {
-        return res.status(400).json({ message: "Please specify a date" });
-    }
-
-    Habit.find({ user_id: req.params.userId, next_week: { $all: [date] } })
-        .then((habits) => [
-            res.status(200).json({
-                message: "Retrieved habits on this date",
-                habits,
-            }),
-        ])
-        .catch((err) => {
-            res.status(500).json({
-                message: "Unable to retrieve habits on this date",
-            });
-        });
-});
-
+//delete specific habit
 router.delete("/users/:userId/habits/:habitId", (req, res, next) => {
     Habit.deleteOne({ user_id: req.params.userId, _id: req.params.habitId })
         .then((habit) => {
@@ -144,15 +95,12 @@ router.delete("/users/:userId/habits/:habitId", (req, res, next) => {
         });
 });
 
+// update specific habit
 router.put("/users/:userId/habits/:habitId/", (req, res, next) => {
     const {
         name,
         frequency,
         description,
-        days,
-        percent_success,
-        completed_times,
-        next_week,
         color,
     } = req.body;
 
@@ -176,22 +124,6 @@ router.put("/users/:userId/habits/:habitId/", (req, res, next) => {
 
     if (description && description.trim() !== "") {
         newHabit["description"] = description;
-    }
-
-    if (days) {
-        newHabit["days"] = days;
-    }
-
-    if (completed_times || completed_times === 0) {
-        newHabit["completed_times"] = completed_times;
-    }
-
-    if (percent_success || percent_success === 0) {
-        newHabit["percent_success"] = percent_success;
-    }
-
-    if (next_week) {
-        newHabit["next_week"] = next_week;
     }
 
     if (color) {

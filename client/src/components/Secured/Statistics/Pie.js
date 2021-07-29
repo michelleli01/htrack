@@ -14,22 +14,7 @@ export default class App extends React.Component {
     }
 
     componentDidMount() {
-        axios({
-            method: "GET",
-            withCredentials: true,
-            url: `/api/users/${Auth.getToken()}/habits/condensed`,
-        })
-            .then((res) => {
-                this.setState({ data: res.data.newHabits });
-                const newColors = [];
-                res.data.newHabits.forEach(function(habit){
-                    newColors.push(habit.color);
-                })
-                this.setState({ colors: newColors });
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        
     }
 
     render() {

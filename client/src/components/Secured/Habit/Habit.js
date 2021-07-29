@@ -10,28 +10,6 @@ import "./Habit.css";
 export default function Habit(props) {
     const [editButtonClicked, setEditButtonClicked] = useState(false);
 
-    useEffect(() => {
-        const next_week = [];
-        if (props.habit.frequency === "Daily") {
-            for (let i = 0; i < 7; i++) {
-                next_week.push(moment().add(i, "day").format("YYYY-MM-DD"));
-            }
-        }
-
-        axios({
-            method: "PUT",
-            data: { next_week: next_week },
-            withCredentials: true,
-            url: `/api/users/${Auth.getToken()}/habits/${props.habit._id}`,
-        })
-            .then((res) => {
-                console.log(res);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }, []);
-
 
     return (
         <div className="habit">

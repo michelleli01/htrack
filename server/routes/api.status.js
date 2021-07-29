@@ -1,15 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const Status = require("../models/habit");
+const Status = require("../models/status");
 
 // get specific status
 router.get("/users/:userId/habits/:habitId", (req, res, next) => {
     Status.findOne({ user_id: req.params.userId, habit_id: req.params.habitId })
-        .then((statuses) => {
-            res.status(200).json({ statuses });
+        .then((status) => {
+            res.status(200).json({ status });
         })
         .catch((err) => {
-            res.status(500).json({ message: "Unable to get statuses" });
+            res.status(500).json({ message: "Unable to get status" });
         });
 });
 
@@ -27,6 +27,7 @@ router.get("/users/:userId/date/:date", (req, res, next) => {
 // create status
 router.post("/users/:userId/habits/:habitId", (req, res, next) => {
     const { date, complete } = req.body;
+    console.log(req.body);
     if (!date || complete === null)
         return res.status(400).json({ message: "Not enough information" });
     else {
@@ -52,6 +53,7 @@ router.post("/users/:userId/habits/:habitId", (req, res, next) => {
                     .then((status) => {
                         res.status(200).json({
                             success: true,
+                            status,
                             message: "Status successfully created",
                         });
                     })
@@ -85,10 +87,10 @@ router.get("/users/:userId/", (req, res, next) => {
 });
 
 // update status
-router.put("/:statusId/users/:userId", (req, res, next) => {
+router.put("/users/:userId/habits/:habitId", (req, res, next) => {
     const { complete } = req.body;
-    Habit.updateOne(
-        { user_id: req.params.userId, _id: req.params.habitId },
+    Status.updateOne(
+        { user_id: req.params.userId, habit_id: req.params.habitId },
         { complete: complete }
     )
         .then(() => {

@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import Auth from "../../../auth/Auth";
 import Habit from "./Habit";
+import moment from "moment";
+import { occurs } from "./habit_helper";
 
 import "./HabitList.css";
 
@@ -33,6 +35,24 @@ export default class HabitList extends React.Component {
             })
             .catch((err) => {
                 this.setState({ error: err.response.data.message });
+            });
+    }
+
+    createStatus(habit) {
+        axios({
+            method: "POST",
+            withCredentials: true,
+            data: {
+                date: moment().format("YYYY-MM-DD"),
+                complete: false,
+            },
+            url: `/status/users/${Auth.getToken()}/habits/${habit._id}`,
+        })
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err.response.data.message);
             });
     }
 

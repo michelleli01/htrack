@@ -5,7 +5,7 @@ const habit = new mongoose.Schema({
         ref: "User",
     },
     name: String,
-    frequency: String,
+    frequency: Array,
     description: String,
     start_date: Date,
     color: String

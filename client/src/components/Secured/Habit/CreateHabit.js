@@ -8,7 +8,7 @@ import "./CreateHabit.css";
 export default function CreateHabit(props) {
     const [habitName, setHabitName] = useState("");
     const [habitDescription, setHabitDescription] = useState("");
-    const [frequency, setFrequency] = useState("Daily");
+    const [frequency, setFrequency] = useState([]);
     const [error, setError] = useState("");
 
     async function handleCreateHabit(e) {
@@ -53,8 +53,9 @@ export default function CreateHabit(props) {
     }
 
     function handleFrequencyChange(e) {
-        e.preventDefault();
-        setFrequency(e.target.value);
+        var target = e.target;
+        var value = Array.from(target.selectedOptions, (option) => option.value);
+        setFrequency(value);
     }
 
     return props.createButtonClicked ? (
@@ -74,21 +75,48 @@ export default function CreateHabit(props) {
                         onChange={handleNameChange}
                     />
                     <label className="create-habit-label">Frequency</label>
+                    <b>use the ctrl key to select multiple days</b>
+                    <br />
                     <select
                         className="create-habit-select"
+                        multiple={true}
                         onChange={handleFrequencyChange}
                     >
-                        <option className="create-habit-option" value="Daily">
-                            Daily
+                        <option className="create-habit-option" value="Monday">
+                            Monday
                         </option>
-                        <option className="create-habit-option" value="Weekly">
-                            Weekly
+                        <option className="create-habit-option" value="Tuesday">
+                            Tuesday
                         </option>
-                        <option className="create-habit-option" value="Monthly">
-                            Monthly
+                        <option
+                            className="create-habit-option"
+                            value="Wednesday"
+                        >
+                            Wednesday
                         </option>
-                        <option className="create-habit-option" value="Yearly">
-                            Yearly
+                        <option
+                            className="create-habit-option"
+                            value="Thursday"
+                        >
+                            Thursday
+                        </option>
+                        <option
+                            className="create-habit-option"
+                            value="Friday"
+                        >
+                            Friday
+                        </option>
+                        <option
+                            className="create-habit-option"
+                            value="Saturday"
+                        >
+                            Saturday
+                        </option>
+                        <option
+                            className="create-habit-option"
+                            value="Sunday"
+                        >
+                            Sunday
                         </option>
                     </select>
                     <label className="create-habit-label">Description</label>

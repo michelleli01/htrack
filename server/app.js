@@ -45,7 +45,7 @@ require('./config/passport_config')(passport);
 //routes
 app.use('/auth', require('./routes/auth'));
 app.use('/api', require('./routes/api.users'));
-app.use('/status', require('./routes/status'));
+app.use('/status', require('./routes/api.status'));
 
 app.listen(PORT, () => {
     console.log(`Server is running on ${PORT}`);

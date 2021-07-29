@@ -6,8 +6,12 @@ import "./Date.css";
 
 export default function Date(props) {
     const [habits, setHabits] = useState([]);
-
     
+    useEffect(() => {
+        // axios({
+
+        // })
+    }, [])
 
     return (
         <div>

@@ -22,8 +22,8 @@ router.get("/users/:userId/habits", (req, res, next) => {
 // create new habit
 router.post("/users/:userId/habits", (req, res, next) => {
     const { name, description, frequency, start_date, color } = req.body;
-
-    if (name.trim() === "" || frequency.trim() === "" || !start_date) {
+    console.log(req.body);
+    if (name.trim() === "" || !frequency || !start_date) {
         res.status(400).json({ message: "Please enter all fields" });
     } else {
         Habit.findOne({ name: name }).then((habit) => {

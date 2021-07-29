@@ -20,8 +20,9 @@ export default function EditHabit(props) {
     }
 
     function handleNewFrequencyChange(e) {
-        e.preventDefault();
-        setNewFrequency(e.target.value);
+        var target = e.target;
+        var value = Array.from(target.selectedOptions, (option) => option.value);
+        setNewFrequency(value);
     }
 
     async function handleEditHabit(e) {
@@ -82,19 +83,44 @@ export default function EditHabit(props) {
                     <label className="edit-habit-label">New Frequency</label>
                     <select
                         className="edit-habit-select"
+                        multiple={true}
                         onChange={handleNewFrequencyChange}
                     >
-                        <option className="edit-habit-option" value="Daily">
-                            Daily
+                        <option className="edit-habit-option" value="Monday">
+                            Monday
                         </option>
-                        <option className="edit-habit-option" value="Weekly">
-                            Weekly
+                        <option className="edit-habit-option" value="Tuesday">
+                            Tuesday
                         </option>
-                        <option className="edit-habit-option" value="Monthly">
-                            Monthly
+                        <option
+                            className="edit-habit-option"
+                            value="Wednesday"
+                        >
+                            Wednesday
                         </option>
-                        <option className="edit-habit-option" value="Yearly">
-                            Yearly
+                        <option
+                            className="edit-habit-option"
+                            value="Thursday"
+                        >
+                            Thursday
+                        </option>
+                        <option
+                            className="edit-habit-option"
+                            value="Friday"
+                        >
+                            Friday
+                        </option>
+                        <option
+                            className="edit-habit-option"
+                            value="Saturday"
+                        >
+                            Saturday
+                        </option>
+                        <option
+                            className="edit-habit-option"
+                            value="Sunday"
+                        >
+                            Sunday
                         </option>
                     </select>
                     <label className="edit-habit-label">New Description</label>

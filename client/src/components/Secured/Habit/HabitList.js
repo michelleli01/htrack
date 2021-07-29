@@ -3,7 +3,6 @@ import axios from "axios";
 import Auth from "../../../auth/Auth";
 import Habit from "./Habit";
 import moment from "moment";
-import { occurs } from "./habit_helper";
 
 import "./HabitList.css";
 
@@ -14,6 +13,8 @@ export default class HabitList extends React.Component {
         this.state = {
             error: "",
             habits: [],
+            showAll: false,
+            showCompleted: false,
         };
     }
 
@@ -64,7 +65,14 @@ export default class HabitList extends React.Component {
                         <p className="habit-list-error">{this.state.error}</p>
                     )}
                     {this.state.habits.map((habit) => {
-                        return <Habit key={habit._id} habit={habit} />;
+                        return (
+                            <Habit
+                                key={habit._id}
+                                habit={habit}
+                                showCompleted={this.state.showCompleted}
+                                showAll={this.state.showAll}
+                            />
+                        );
                     })}
                 </div>
             </div>

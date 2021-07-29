@@ -4,32 +4,41 @@ import EditHabit from "./EditHabit";
 import axios from "axios";
 import Auth from "../../../auth/Auth";
 import moment from "moment";
+import { occurs } from "../../Helpers/habit_helper";
 
 import "./Habit.css";
 
 export default function Habit(props) {
     const [editButtonClicked, setEditButtonClicked] = useState(false);
     const [complete, setComplete] = useState();
+    const [render, setRender] = useState(true);
 
     useEffect(() => {
-        axios({
-            method: "GET",
-            withCredentials: true,
-            url: `/status/users/${Auth.getToken()}/habits/${
-                props.habit._id
-            }/date/${moment().format("YYYY-MM-DD")}`,
-        })
-            .then((res) => {
-                if (res.data.status === null) {
-                    createStatus();
-                } else {
-                    console.log(res.data.status);
-                    setComplete(res.data.status.complete);
-                }
+        if (occurs(props.habit.frequency, moment())) {
+            axios({
+                method: "GET",
+                withCredentials: true,
+                url: `/status/users/${Auth.getToken()}/habits/${
+                    props.habit._id
+                }/date/${moment().format("YYYY-MM-DD")}`,
             })
-            .catch((err) => {
-                console.log(err);
-            });
+                .then((res) => {
+                    if (res.data.status === null) {
+                        createStatus();
+                    } else {
+                        console.log(res.data.status);
+                        setComplete(res.data.status.complete);
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
+        else{
+            if(!props.showAll){
+                setRender(false);
+            }
+        }
     }, []);
 
     function createStatus() {
@@ -52,6 +61,11 @@ export default function Habit(props) {
 
     function handleComplete(e) {
         setComplete(e.target.checked);
+        
+        if(!props.showCompleted){
+            setRender(e.target.checked);
+        }
+
         axios({
             method: "PUT",
             data: {
@@ -68,7 +82,7 @@ export default function Habit(props) {
             });
     }
 
-    return !complete ? (
+    return render ? (
         <div className="habit">
             <input
                 type="checkbox"

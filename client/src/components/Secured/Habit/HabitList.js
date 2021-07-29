@@ -13,8 +13,7 @@ export default class HabitList extends React.Component {
         this.state = {
             error: "",
             habits: [],
-            showAll: false,
-            showCompleted: false,
+            showCompleted: true,
         };
     }
 
@@ -70,7 +69,6 @@ export default class HabitList extends React.Component {
                                 key={habit._id}
                                 habit={habit}
                                 showCompleted={this.state.showCompleted}
-                                showAll={this.state.showAll}
                             />
                         );
                     })}

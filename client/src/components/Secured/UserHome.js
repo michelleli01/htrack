@@ -29,9 +29,9 @@ export default function Home() {
         <div className="userhome">
             <NavBar handleLogout={handleLogout} />
             <Dashboard />
-            <Element id="statistics">
+            {/* <Element id="statistics">
                 <Statistics />
-            </Element>
+            </Element> */}
         </div>
     );
 }

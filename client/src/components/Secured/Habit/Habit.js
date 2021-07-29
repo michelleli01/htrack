@@ -33,11 +33,8 @@ export default function Habit(props) {
                 .catch((err) => {
                     console.log(err);
                 });
-        }
-        else{
-            if(!props.showAll){
-                setRender(false);
-            }
+        } else {
+            setRender(false);
         }
     }, []);
 
@@ -61,9 +58,9 @@ export default function Habit(props) {
 
     function handleComplete(e) {
         setComplete(e.target.checked);
-        
-        if(!props.showCompleted){
-            setRender(e.target.checked);
+
+        if (!props.showCompleted) {
+            setRender(!e.target.checked);
         }
 
         axios({
@@ -76,6 +73,7 @@ export default function Habit(props) {
         })
             .then((res) => {
                 console.log(res.data);
+                window.location.reload();
             })
             .catch((err) => {
                 console.log(err.response.data.message);

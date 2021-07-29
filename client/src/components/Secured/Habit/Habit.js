@@ -4,33 +4,32 @@ import EditHabit from "./EditHabit";
 import axios from "axios";
 import Auth from "../../../auth/Auth";
 import moment from "moment";
-import { occurs } from "./habit_helper";
 
 import "./Habit.css";
 
 export default function Habit(props) {
     const [editButtonClicked, setEditButtonClicked] = useState(false);
+    const [complete, setComplete] = useState();
 
     useEffect(() => {
-        if (occurs(props.habit.frequency, moment())) {
-            axios({
-                method: "GET",
-                withCredentials: true,
-                url: `/status/users/${Auth.getToken()}/habits/${
-                    props.habit._id
-                }`,
+        axios({
+            method: "GET",
+            withCredentials: true,
+            url: `/status/users/${Auth.getToken()}/habits/${
+                props.habit._id
+            }/date/${moment().format("YYYY-MM-DD")}`,
+        })
+            .then((res) => {
+                if (res.data.status === null) {
+                    createStatus();
+                } else {
+                    console.log(res.data.status);
+                    setComplete(res.data.status.complete);
+                }
             })
-                .then((res) => {
-                    if (res.data.status === null) {
-                        createStatus();
-                    } else {
-                        console.log(res.data.status);
-                    }
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        }
+            .catch((err) => {
+                console.log(err);
+            });
     }, []);
 
     function createStatus() {
@@ -52,6 +51,7 @@ export default function Habit(props) {
     }
 
     function handleComplete(e) {
+        setComplete(e.target.checked);
         axios({
             method: "PUT",
             data: {
@@ -68,12 +68,13 @@ export default function Habit(props) {
             });
     }
 
-    return (
+    return !complete ? (
         <div className="habit">
             <input
                 type="checkbox"
                 className="habit-input"
                 onChange={handleComplete}
+                checked={complete}
             />
             <h3
                 className="habit-header"
@@ -109,5 +110,7 @@ export default function Habit(props) {
                 habit={props.habit}
             />
         </div>
+    ) : (
+        <div></div>
     );
 }

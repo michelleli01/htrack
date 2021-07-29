@@ -3,8 +3,12 @@ const router = express.Router();
 const Status = require("../models/status");
 
 // get specific status
-router.get("/users/:userId/habits/:habitId", (req, res, next) => {
-    Status.findOne({ user_id: req.params.userId, habit_id: req.params.habitId })
+router.get("/users/:userId/habits/:habitId/date/:date", (req, res, next) => {
+    Status.findOne({
+        user_id: req.params.userId,
+        habit_id: req.params.habitId,
+        date: req.params.date,
+    })
         .then((status) => {
             res.status(200).json({ status });
         })

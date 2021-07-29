@@ -8,7 +8,7 @@ const habit = new mongoose.Schema({
     frequency: Array,
     description: String,
     start_date: Date,
-    color: String
+    color: String,
 });
 
 module.exports = mongoose.model("Habit", habit);

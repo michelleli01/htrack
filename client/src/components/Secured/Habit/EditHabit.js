@@ -7,7 +7,7 @@ import "./EditHabit.css";
 export default function EditHabit(props) {
     const [newName, setNewName] = useState("");
     const [newDescription, setNewDescription] = useState("");
-    const [newFrequency, setNewFrequency] = useState("Daily");
+    const [newFrequency, setNewFrequency] = useState([]);
 
     function handleNewNameChange(e) {
         e.preventDefault();

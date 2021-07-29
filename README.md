@@ -14,7 +14,7 @@ I began this project mid-July 2021 and used ReactJS to code the frontend portion
 
 #### Dashboard
 
-#### Habit Functionality
+#### Statistics
 
 ### Challenges
 Since this was my first major independent project where I had to consider both frontend and backend portions of the web application, I quickly found myself overwhelmed with the task. Before this project I had no experience or knowledge about React and only recently finished taking the Introduction to Backend Programming course offered by Cornell's AppDev team. Through the course I gained some experience with writing backend APIs but never had to write any frontend code or connect the frontend and backend of an application. In addition, I had never worked with ExpressJS, NodeJS, or MongoDB previously. So, I had to quickly learn all these new technologies and how they intertwine with my resources aka the Internet. Though I had no web development experience prior to this project I was still able to overcome these barriers and because I persevered, I learned tremendous amounts about web development, both frontend and backend development, in addition to gaining an enhanced knowledge about web technologies and protocols.

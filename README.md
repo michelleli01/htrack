@@ -1,6 +1,6 @@
 # HTrack
 HTrack is a online habit tracking app that allows users to build more productive and fulfilling lifestyles so they can accomplish what they want! <br/> <br/>
-**Technologies Used: ReactJS, ExpressJS, NodeJS, MongoDB** <br/>
+
 I began this project mid-July 2021 and used ReactJS to code the frontend portion while using ExpressJS and NodeJS for the backend RESTful API and while MongoDB to store user data.
 
 ### Features
@@ -15,6 +15,22 @@ I began this project mid-July 2021 and used ReactJS to code the frontend portion
 #### Habit Functionality
 ![HTRACK_HABIT_FUNCTIONALITY_DEMO](https://user-images.githubusercontent.com/11303631/127583028-0c38a303-931b-4d55-b962-5bede300a8f8.gif)
 
-### Challenges
+### Features
+#### create/edit/delete habits
+create a habit and select which days of the week you want to repeat it then a new habit will be created with a randomly generated color associated with it!
 
-### Moving Forward
+#### weekly calendar
+take a look at the habits comings up.
+
+#### statistics [ongoing]
+take a look at how you're holding up
+
+### Technology
+#### Frontend:
+ReactJS, HTML5, CSS3, JavaScript
+
+#### Backend:
+ExpressJS, NodeJS, Postman, mongoose, Docker, AWS
+
+#### Database:
+MongoDB

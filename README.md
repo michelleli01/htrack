@@ -1,9 +1,7 @@
 # HTrack
 HTrack is a online habit tracking app that allows users to build more productive and fulfilling lifestyles so they can accomplish what they want by building more meaningful habits! <br/> <br/>
 
-### Features
-
-### Demo
+## Demo
 #### Homepage
 ![HTRACK_HOMEPAGE_DEMO](https://user-images.githubusercontent.com/11303631/126930427-d7e4fba5-976e-4980-9cae-11d55fc7769c.gif)
 
@@ -13,7 +11,12 @@ HTrack is a online habit tracking app that allows users to build more productive
 #### Habit Functionality
 ![HTRACK_HABIT_FUNCTIONALITY_DEMO](https://user-images.githubusercontent.com/11303631/127583028-0c38a303-931b-4d55-b962-5bede300a8f8.gif)
 
-### Features
+## Screenshots:
+![HTRACK_DASHBOARD_SS](https://user-images.githubusercontent.com/11303631/127592619-9796a949-42ed-431f-a2a4-3b9250473046.PNG)
+![HTRACK_CREATE_HABIT_SS](https://user-images.githubusercontent.com/11303631/127592621-96d991db-5156-45b8-9d01-eb53d58db252.PNG)
+![HTRACK_EDIT_HABIT_SS](https://user-images.githubusercontent.com/11303631/127592622-32ffa49f-f441-433f-bdda-c9f8840044e3.PNG)
+
+## Features
 #### create/edit/delete habits
 create a habit and select which days of the week you want to repeat it then a new habit will be created with a randomly generated color associated with it!
 
@@ -23,7 +26,7 @@ take a look at the habits comings up.
 #### statistics [ongoing]
 take a look at how you're holding up
 
-### Technology
+## Technology
 #### Frontend:
 ReactJS, HTML5, CSS3, JavaScript
 

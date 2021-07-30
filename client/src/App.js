@@ -31,7 +31,7 @@ function App() {
                             component={UserHome}
                         />
                     </Switch>
-                    <Footer />
+                    {/* <Footer /> */}
                 </div>
             </Router>
         </div>

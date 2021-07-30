@@ -110,4 +110,17 @@ router.put("/users/:userId/habits/:habitId", (req, res, next) => {
         });
 });
 
+router.delete("/users/:userId/habits/:habitId", (req, res, next) => {
+    Status.deleteOne({
+        user_id: req.params.userId,
+        habit_id: req.params.habitId,
+    })
+        .then((data) => {
+            res.status(200).json({ message: "Delete status successfully" });
+        })
+        .catch((err) => {
+            res.status(400).json({ err });
+        });
+});
+
 module.exports = router;

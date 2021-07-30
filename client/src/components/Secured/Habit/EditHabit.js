@@ -21,7 +21,10 @@ export default function EditHabit(props) {
 
     function handleNewFrequencyChange(e) {
         var target = e.target;
-        var value = Array.from(target.selectedOptions, (option) => option.value);
+        var value = Array.from(
+            target.selectedOptions,
+            (option) => option.value
+        );
         setNewFrequency(value);
     }
 
@@ -58,13 +61,27 @@ export default function EditHabit(props) {
         })
             .then((res) => {
                 console.log(res);
-                props.setEditButtonClicked(false);
-                window.location.reload();
             })
 
             .catch((err) => {
                 console.log(err);
             });
+
+        await axios({
+            method: "DELETE",
+            withCredentials: true,
+            url: `/status/users/${Auth.getToken()}/habits/${props.habit._id}`,
+        })
+            .then((res) => {
+                console.log(res);
+            })
+
+            .catch((err) => {
+                console.log(err);
+            });
+
+        window.location.reload();
+        props.setEditButtonClicked(false);
     }
 
     return props.editButtonClicked ? (
@@ -92,34 +109,19 @@ export default function EditHabit(props) {
                         <option className="edit-habit-option" value="Tuesday">
                             Tuesday
                         </option>
-                        <option
-                            className="edit-habit-option"
-                            value="Wednesday"
-                        >
+                        <option className="edit-habit-option" value="Wednesday">
                             Wednesday
                         </option>
-                        <option
-                            className="edit-habit-option"
-                            value="Thursday"
-                        >
+                        <option className="edit-habit-option" value="Thursday">
                             Thursday
                         </option>
-                        <option
-                            className="edit-habit-option"
-                            value="Friday"
-                        >
+                        <option className="edit-habit-option" value="Friday">
                             Friday
                         </option>
-                        <option
-                            className="edit-habit-option"
-                            value="Saturday"
-                        >
+                        <option className="edit-habit-option" value="Saturday">
                             Saturday
                         </option>
-                        <option
-                            className="edit-habit-option"
-                            value="Sunday"
-                        >
+                        <option className="edit-habit-option" value="Sunday">
                             Sunday
                         </option>
                     </select>

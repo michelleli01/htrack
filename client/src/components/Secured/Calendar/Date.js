@@ -24,12 +24,14 @@ export default function Date(props) {
 
     return (
         <div>
-            <h3 className="date-header">{props.date.format("dddd")}</h3>
-            <p className="date-subtitle">{props.date.format("MM/DD")}</p>
+            {/* <h3 className="date-header">{props.date.format("dddd")}</h3> */}
+            <p className="date-subtitle">{props.title}</p>
 
-            {habits.map((habit) => {
-                return <DateItem habit={habit} date={props.date} />;
-            })}
+            <div className="date-habit-container">
+                {habits.map((habit) => {
+                    return <DateItem habit={habit} date={props.date} />;
+                })}
+            </div>
         </div>
     );
 }

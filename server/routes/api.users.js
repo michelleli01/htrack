@@ -26,39 +26,41 @@ router.post("/users/:userId/habits", (req, res, next) => {
     if (name.trim() === "" || !frequency || !start_date) {
         res.status(400).json({ message: "Please enter all fields" });
     } else {
-        Habit.findOne({ name: name }).then((habit) => {
-            if (habit) {
-                res.status(400).json({
-                    success: false,
-                    message: "Habit already exists",
-                });
-            } else {
-                const newHabit = new Habit({
-                    user_id: req.params.userId,
-                    name: name,
-                    frequency: frequency,
-                    description: description,
-                    start_date: start_date,
-                    color: color,
-                });
-
-                newHabit
-                    .save()
-                    .then((habit) => {
-                        res.status(200).json({
-                            success: true,
-                            message: "Habit successfully created",
-                        });
-                    })
-                    .catch((err) => {
-                        console.log(err.message);
-                        res.status(400).json({
-                            success: false,
-                            message: "Unable to create habit at this time",
-                        });
+        Habit.findOne({ user_id: req.params.userId, name: name }).then(
+            (habit) => {
+                if (habit) {
+                    res.status(400).json({
+                        success: false,
+                        message: "Habit already exists",
                     });
+                } else {
+                    const newHabit = new Habit({
+                        user_id: req.params.userId,
+                        name: name,
+                        frequency: frequency,
+                        description: description,
+                        start_date: start_date,
+                        color: color,
+                    });
+
+                    newHabit
+                        .save()
+                        .then((habit) => {
+                            res.status(200).json({
+                                success: true,
+                                message: "Habit successfully created",
+                            });
+                        })
+                        .catch((err) => {
+                            console.log(err.message);
+                            res.status(400).json({
+                                success: false,
+                                message: "Unable to create habit at this time",
+                            });
+                        });
+                }
             }
-        });
+        );
     }
 });
 
@@ -97,23 +99,22 @@ router.delete("/users/:userId/habits/:habitId", (req, res, next) => {
 
 // update specific habit
 router.put("/users/:userId/habits/:habitId/", (req, res, next) => {
-    const {
-        name,
-        frequency,
-        description,
-        color,
-    } = req.body;
+    const { name, frequency, description, color } = req.body;
 
     const newHabit = {};
 
     if (name && name.trim() !== "") {
-        Habit.findOne({ name: name }).then((habit) => {
-            if (habit && habit.name !== name) {
-                return res
-                    .status(400)
-                    .json({ message: "Habit with that name already exists" });
+        Habit.findOne({ user_id: req.params.userId, name: name }).then(
+            (habit) => {
+                if (habit && habit.name !== name) {
+                    return res
+                        .status(400)
+                        .json({
+                            message: "Habit with that name already exists",
+                        });
+                }
             }
-        });
+        );
 
         newHabit["name"] = name;
     }

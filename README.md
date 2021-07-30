@@ -23,6 +23,9 @@ Developing this project served not only as an introduction to web development fo
 ![HTRACK_EDIT_HABIT_SS](https://user-images.githubusercontent.com/11303631/127592622-32ffa49f-f441-433f-bdda-c9f8840044e3.PNG)
 
 ## Features
+#### authentication
+create new accounts and login
+
 #### create/edit/delete habits
 create a habit and select which days of the week you want to repeat it then a new habit will be created with a randomly generated color associated with it!
 

@@ -1,0 +1,8 @@
+.habit-name{
+    display: inline-block;
+    border: none;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}

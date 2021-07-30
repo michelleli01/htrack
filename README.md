@@ -12,8 +12,11 @@ HTrack is a online habit tracking app that allows users to build more productive
 ![HTRACK_HABIT_FUNCTIONALITY_DEMO](https://user-images.githubusercontent.com/11303631/127583028-0c38a303-931b-4d55-b962-5bede300a8f8.gif)
 
 ## Screenshots:
+#### Dashboard
 ![HTRACK_DASHBOARD_SS](https://user-images.githubusercontent.com/11303631/127592619-9796a949-42ed-431f-a2a4-3b9250473046.PNG)
+#### Create habit
 ![HTRACK_CREATE_HABIT_SS](https://user-images.githubusercontent.com/11303631/127592621-96d991db-5156-45b8-9d01-eb53d58db252.PNG)
+#### Edit habit
 ![HTRACK_EDIT_HABIT_SS](https://user-images.githubusercontent.com/11303631/127592622-32ffa49f-f441-433f-bdda-c9f8840044e3.PNG)
 
 ## Features

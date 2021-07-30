@@ -13,7 +13,7 @@ I began this project mid-July 2021 and used ReactJS to code the frontend portion
 ![HTRACK_AUTHENTICATION_DEMO](https://user-images.githubusercontent.com/11303631/127429751-a54dc4c5-340b-4048-befb-26b72677d89d.gif)
 
 #### Habit Functionality
-![HTRACK_HABIT_FUNCTIONALITY_DEMO](https://user-images.githubusercontent.com/11303631/127582938-9ea7e5ae-935b-4a99-97bb-ec5256546ab9.gif)
+![HTRACK_HABIT_FUNCTIONALITY_DEMO](https://user-images.githubusercontent.com/11303631/127583028-0c38a303-931b-4d55-b962-5bede300a8f8.gif)
 
 ### Challenges
 

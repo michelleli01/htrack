@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { done, occurs } from "../../Helpers/habit_helper";
 import Auth from "../../../auth/Auth";
+import EditHabit from "../Habit/EditHabit";
+
+import "./DateItem.css";
 
 export default function DateItem(props) {
     const [complete, setComplete] = useState(false);
+    const [editButtonClicked, setEditButtonClicked] = useState(false);
 
     useEffect(() => {
         done(Auth.getToken(), props.habit._id, props.date).then((data) =>
@@ -13,12 +17,20 @@ export default function DateItem(props) {
 
     return occurs(props.habit.frequency, props.date) && !complete ? (
         <div className="habit-container">
-            <h3
+            <button
                 className="habit-name"
                 style={{ backgroundColor: `${props.habit.color}` }}
+                onClick={(e) => {
+                    setEditButtonClicked(true);
+                }}
             >
                 {props.habit.name}
-            </h3>
+            </button>
+            <EditHabit
+                editButtonClicked={editButtonClicked}
+                setEditButtonClicked={setEditButtonClicked}
+                habit={props.habit}
+            />
         </div>
     ) : (
         <div></div>

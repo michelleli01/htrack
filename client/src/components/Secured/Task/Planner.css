@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+.planner-container{
+    margin-top: 150px;
+    height: 990px;
+}
+
+.planner-header {
+    font: normal normal normal bold 40px/40px Poppins;
+    position: relative;
+    color: #353535;
+    margin-bottom: 25px;
+    margin-left: 2.5em;
+    text-align: left;
+}
+
+.planner-subtitle {
+    font: normal normal normal 20px/16px Poppins;
+    margin-left: 5em;
+    letter-spacing: 0.25em;
+    color: gray;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.planner-divider{
+    margin-left: 6.25em;
+    width: 7em;
+    height: 0.5em;
+    opacity: 1;
+    text-align: left;
+    position: relative;
+    background: rgb(202, 108, 108);
+    margin-bottom: 1.5em;
+    margin-top: 0.5em;
+}
+
+.planner-actions {
+    text-align: center;
+    margin-left: 7.25em;
+}

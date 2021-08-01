@@ -12,7 +12,7 @@ export default function Dashboard() {
     return (
         <Container fluid className="dashboard">
             <h3 className="dashboard-header">Dashboard</h3>
-            <p className="dashboard-subtitle">{new Date().toLocaleDateString()}</p>
+            <p className="dashboard-subtitle">Today</p>
             <div className="dashboard-divider" />
             <Row>
                 <Col sm={2} className="dashboard-actions">

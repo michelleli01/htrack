@@ -61,6 +61,8 @@ export default function EditHabit(props) {
         })
             .then((res) => {
                 console.log(res);
+                window.location.reload();
+                props.setEditButtonClicked(false);
             })
 
             .catch((err) => {
@@ -74,14 +76,13 @@ export default function EditHabit(props) {
         })
             .then((res) => {
                 console.log(res);
+                window.location.reload();
+                props.setEditButtonClicked(false);
             })
 
             .catch((err) => {
                 console.log(err);
             });
-
-        window.location.reload();
-        props.setEditButtonClicked(false);
     }
 
     return props.editButtonClicked ? (

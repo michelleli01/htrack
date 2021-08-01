@@ -1,18 +1,20 @@
 import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link, animateScroll as Scroll } from "react-scroll";
-import { Link as RouteLink } from "react-router-dom";
+import { Link as RouteLink, useRouteMatch } from "react-router-dom";
 
 import logo from "../../assets/HTrack_Logo.png";
 import "./NavBar.css";
 
 export default function NavBar(props) {
+    const url = useRouteMatch();
+
     return props.handleLogout === undefined ? (
         <Navbar
             collapseOnSelect
-            fixed="top"
-            expand="md"
-            className="nav-container"
+            fixed='top'
+            expand='md'
+            className='nav-container'
         >
             <Container>
                 <Navbar.Brand
@@ -20,27 +22,27 @@ export default function NavBar(props) {
                         Scroll.scrollToTop();
                     }}
                 >
-                    <img src={logo} height="100" alt="htrack logo" />
+                    <img src={logo} height='100' alt='htrack logo' />
                 </Navbar.Brand>
-                <Navbar.Toggle aria-controls="response-navbar-nav" />
-                <Navbar.Collapse id="response-navbar-nav">
+                <Navbar.Toggle aria-controls='response-navbar-nav' />
+                <Navbar.Collapse id='response-navbar-nav'>
                     <Nav
-                        className="mr-auto justify-content-end"
+                        className='mr-auto justify-content-end'
                         style={{ width: "100%" }}
                     >
                         <RouteLink
                             onClick={() => {
                                 Scroll.scrollToTop();
                             }}
-                            className="link"
-                            to="/"
+                            className='link'
+                            to='/'
                         >
                             Home
                         </RouteLink>
                         <Link
-                            className="link"
-                            to="about"
-                            activeClass="active"
+                            className='link'
+                            to='about'
+                            activeClass='active'
                             spy={true}
                             smooth={true}
                             offset={-10}
@@ -49,9 +51,9 @@ export default function NavBar(props) {
                             About
                         </Link>
                         <Link
-                            className="link"
-                            to="contact"
-                            activeClass="active"
+                            className='link'
+                            to='contact'
+                            activeClass='active'
                             spy={true}
                             smooth={true}
                             offset={-10}
@@ -59,13 +61,13 @@ export default function NavBar(props) {
                         >
                             Contact
                         </Link>
-                        <button className="button">
-                            <Nav.Link className="button-link" href="/login">
+                        <button className='button'>
+                            <Nav.Link className='button-link' href='/login'>
                                 Login
                             </Nav.Link>
                         </button>
-                        <button className="button">
-                            <Nav.Link className="button-link" href="/signup">
+                        <button className='button'>
+                            <Nav.Link className='button-link' href='/signup'>
                                 Signup
                             </Nav.Link>
                         </button>
@@ -76,37 +78,28 @@ export default function NavBar(props) {
     ) : (
         <Navbar
             collapseOnSelect
-            fixed="top"
-            expand="md"
-            className="nav-container"
+            fixed='top'
+            expand='md'
+            className='nav-container'
         >
             <Container>
-                <Navbar.Brand
-                    onClick={() => {
-                        Scroll.scrollToTop();
-                    }}
-                >
-                    <img src={logo} height="100" alt="htrack logo" />
+                <Navbar.Brand href="/user/home">
+                    <img src={logo} height='100' alt='htrack logo' />
                 </Navbar.Brand>
-                <Navbar.Toggle aria-controls="response-navbar-nav" />
-                <Navbar.Collapse id="response-navbar-nav">
+                <Navbar.Toggle aria-controls='response-navbar-nav' />
+                <Navbar.Collapse id='response-navbar-nav'>
                     <Nav
-                        className="mr-auto justify-content-end"
+                        className='mr-auto justify-content-end'
                         style={{ width: "100%" }}
                     >
-                        <Link
-                            className="link"
-                            to="statistics"
-                            activeClass="active"
-                            spy={true}
-                            smooth={true}
-                            offset={-10}
-                            duration={10}
-                        >
+                        <RouteLink to={`/user/planner`} className='link'>
+                            Planner
+                        </RouteLink>
+                        <RouteLink to={`/user/statistics`} className='link'>
                             Statistics
-                        </Link>
+                        </RouteLink>
                         <button
-                            className="button button-link"
+                            className='button button-link'
                             onClick={props.handleLogout}
                         >
                             Logout

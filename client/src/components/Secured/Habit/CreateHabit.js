@@ -33,8 +33,8 @@ export default function CreateHabit(props) {
         })
             .then((res) => {
                 console.log(res);
-                props.setCreateButtonClicked(false);
                 window.location.reload();
+                props.setCreateButtonClicked(false);
             })
             .catch((err) => {
                 console.log(err);

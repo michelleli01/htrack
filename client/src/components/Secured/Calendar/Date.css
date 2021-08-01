@@ -21,14 +21,7 @@
 
 }
 
-.habit-name {
-    font: normal normal bold 20px/32px Open Sans;
-    padding-left: 7px;
-    letter-spacing: 1.5px;
-    color: white !important;
-}
-
-.date-habit-container {
+.date-container {
     margin-top: -15px;
     background-color: rgb(245, 245, 245);
     height: 60vh;

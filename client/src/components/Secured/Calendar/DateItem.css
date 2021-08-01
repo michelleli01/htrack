@@ -1,3 +1,29 @@
+.task-item-container{
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    margin-bottom: 10px;
+    padding: 5px 0px;
+    position: relative;
+    width: 100%;
+}
+
+.task-item {
+    display: inline;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font: normal normal bold 20px/32px Open Sans;
+    letter-spacing: 1.5px;
+    width: 100%;
+    text-align: left;
+}
+
+.task-item-checkbox {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 .habit-name{
     display: inline-block;
     border: none;
@@ -6,4 +32,7 @@
     width: 100%;
     text-align: left;
     margin-bottom: 10px;
+    font: normal normal bold 20px/32px Open Sans;
+    padding-left: 7px;
+    letter-spacing: 1.5px;
 }

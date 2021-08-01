@@ -27,7 +27,7 @@ export default function Login() {
                 console.log(res.data.message);
                 console.log(res.data)
                 Auth.authenticateUser(res.data.user._id, res.data.user.email);
-                history.push('/user');
+                history.push('/user/home');
             } else{
                 setError(res.data.message);
                 email.current.value = "";

@@ -17,16 +17,18 @@ export default function Task({ task, completeTask }) {
             className='task-container'
             style={{ borderColor: `${task.color}` }}
         >
-            <input
-                className='task-checkbox'
-                type='checkbox'
-                onChange={handleToggle}
-            />
-            <h3 style={{ color: `${task.color}` }} className='task-header'>
-                {task.name}
-            </h3>
-            <p className='task-subtitle'>Priority: {task.priority}</p>
-            <p className='task-text'>{task.comments}</p>
+            <div className='task'>
+                <input
+                    className='task-checkbox'
+                    type='checkbox'
+                    onChange={handleToggle}
+                />
+                <h3 style={{ color: `${task.color}` }} className='task-header'>
+                    {task.name}
+                </h3>
+                <p className='task-subtitle'>Priority: {task.priority}</p>
+                <p className='task-text'>{task.comments}</p>
+            </div>
             <button
                 style={{ color: `${task.color}` }}
                 className='task-edit-button'

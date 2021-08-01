@@ -21,6 +21,8 @@ Developing this project served not only as an introduction to web development fo
 ![HTRACK_CREATE_HABIT_SS](https://user-images.githubusercontent.com/11303631/127592621-96d991db-5156-45b8-9d01-eb53d58db252.PNG)
 #### Edit habit
 ![HTRACK_EDIT_HABIT_SS](https://user-images.githubusercontent.com/11303631/127592622-32ffa49f-f441-433f-bdda-c9f8840044e3.PNG)
+#### Weekly planner
+![HTRACK_WEEKLY_PLANNER_SS](https://user-images.githubusercontent.com/11303631/127756753-33ff8fc9-70f4-4566-b964-544eac62f1f1.png)
 
 ## Features
 #### authentication
@@ -32,8 +34,8 @@ create a habit and select which days of the week you want to repeat it then a ne
 #### weekly calendar
 take a look at the habits comings up.
 
-#### statistics [ongoing]
-take a look at how you're holding up
+#### weekly planner
+plan your habits into your week!
 
 ## Technology
 #### Frontend:

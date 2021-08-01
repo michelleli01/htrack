@@ -23,6 +23,8 @@ Developing this project served not only as an introduction to web development fo
 ![HTRACK_EDIT_HABIT_SS](https://user-images.githubusercontent.com/11303631/127592622-32ffa49f-f441-433f-bdda-c9f8840044e3.PNG)
 #### Weekly planner
 ![HTRACK_WEEKLY_PLANNER_SS](https://user-images.githubusercontent.com/11303631/127756753-33ff8fc9-70f4-4566-b964-544eac62f1f1.png)
+#### Create new task
+![HTRACK_WEEKLY_PLANNER_CREATE_TASK_SS](https://user-images.githubusercontent.com/11303631/127756764-e915504d-cd03-4c33-b7fb-afe841739f75.png)
 
 ## Features
 #### authentication

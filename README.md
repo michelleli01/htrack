@@ -1,5 +1,5 @@
 # HTrack
-HTrack is a online habit tracking app that allows users to build more productive and fulfilling lifestyles so they can accomplish what they want by building more meaningful habits! 
+HTrack is a online habit tracking app that allows users to build more productive and fulfilling lifestyles so they can accomplish what they want by allowing them to effectively track their time and build more meaningful habits! 
 
 I was first inspired to create this app after I read Atomic Habits by James Clear, which made me realize the importance of making small improvements in your life to really make a big change. I immediately wanted to start incorporating some of the tips talked about in the book in my own life, but I found myself continuously falling into the vicious cycle of watching Netflix all day until 3 AM. I also found that no matter how many tracking apps I downloaded, I always forgot about them. So, I decided to start developing this web app. By devoting so much time and energy into this project I'm more inclined to actually use it in my daily life right? 
 Developing this project served not only as an introduction to web development for me, but also as a reminder to start slowly improving my life, starting with the simple things. I plan on expanding this project once my knowledge and experience around web development has increased.
@@ -21,6 +21,10 @@ Developing this project served not only as an introduction to web development fo
 ![HTRACK_CREATE_HABIT_SS](https://user-images.githubusercontent.com/11303631/127592621-96d991db-5156-45b8-9d01-eb53d58db252.PNG)
 #### Edit habit
 ![HTRACK_EDIT_HABIT_SS](https://user-images.githubusercontent.com/11303631/127592622-32ffa49f-f441-433f-bdda-c9f8840044e3.PNG)
+#### Weekly planner
+![HTRACK_WEEKLY_PLANNER_SS](https://user-images.githubusercontent.com/11303631/127756753-33ff8fc9-70f4-4566-b964-544eac62f1f1.png)
+#### Create new task
+![HTRACK_WEEKLY_PLANNER_CREATE_TASK_SS](https://user-images.githubusercontent.com/11303631/127756764-e915504d-cd03-4c33-b7fb-afe841739f75.png)
 
 ## Features
 #### authentication
@@ -32,8 +36,8 @@ create a habit and select which days of the week you want to repeat it then a ne
 #### weekly calendar
 take a look at the habits comings up.
 
-#### statistics [ongoing]
-take a look at how you're holding up
+#### weekly planner
+plan your habits into your week!
 
 ## Technology
 #### Frontend:

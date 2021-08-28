@@ -1,8 +1,7 @@
 # HTrack
 HTrack is a online habit tracking app that allows users to build more productive and fulfilling lifestyles so they can accomplish what they want by allowing them to effectively track their time and build more meaningful habits! 
 
-I was first inspired to create this app after I read Atomic Habits by James Clear, which made me realize the importance of making small improvements in your life to really make a big change. I immediately wanted to start incorporating some of the tips talked about in the book in my own life, but I found myself continuously falling into the vicious cycle of watching Netflix all day until 3 AM. I also found that no matter how many tracking apps I downloaded, I always forgot about them. So, I decided to start developing this web app. By devoting so much time and energy into this project I'm more inclined to actually use it in my daily life right? 
-Developing this project served not only as an introduction to web development for me, but also as a reminder to start slowly improving my life, starting with the simple things. I plan on expanding this project once my knowledge and experience around web development has increased.
+Developing this project served not only as an introduction to web development for me, but also as a reminder to start slowly improving my life, starting with the simple things. I plan on expanding and refactoring this project once my knowledge and experience around web development has increased.
 
 ## Features
 #### authentication

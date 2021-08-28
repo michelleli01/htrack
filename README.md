@@ -37,7 +37,7 @@ create a habit and select which days of the week you want to repeat it then a ne
 take a look at the habits comings up.
 
 #### weekly planner
-plan your habits into your week!
+plan your week!
 
 ## Technology
 #### Frontend:

@@ -76,7 +76,7 @@ export default function Date(props) {
                             <HabitItem
                                 key={listItem._id}
                                 habit={listItem}
-                                date={moment()}
+                                date={props.date}
                             />
                         );
                     }

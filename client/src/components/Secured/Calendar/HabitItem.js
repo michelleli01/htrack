@@ -10,8 +10,13 @@ export default function HabitItem(props) {
     const [editButtonClicked, setEditButtonClicked] = useState(false);
 
     useEffect(() => {
-        done(Auth.getToken(), props.habit._id, props.date).then((data) =>
+        done(Auth.getToken(), props.habit._id, props.date).then((data) =>{
+            console.log(props.habit.frequency);
+            console.log(props.date);
+
+            console.log(occurs(props.habit.frequency, props.date));
             setComplete(data)
+        }
         );
     }, []);
 
@@ -24,6 +29,7 @@ export default function HabitItem(props) {
                     setEditButtonClicked(true);
                 }}
             >
+                {console.log("props")}
                 {props.habit.name}
             </button>
             <EditHabit

@@ -3,6 +3,7 @@ import axios from "axios";
 // habit occurs on this day
 export function occurs(frequency, date) {
     const weekDay = date.day();
+    console.log(weekDay);
     var weekDayString = "";
 
     switch (weekDay) {

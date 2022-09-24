@@ -5,7 +5,7 @@ import EditHabit from "../Habit/EditHabit";
 
 import "./DateItem.css";
 
-export default function DateItem(props) {
+export default function HabitItem(props) {
     const [complete, setComplete] = useState(false);
     const [editButtonClicked, setEditButtonClicked] = useState(false);
 
